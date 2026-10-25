@@ -1,0 +1,17 @@
+{
+  // For screenshots: open this folder on its own (`code samples`) so the
+  // unresolved imports in the samples don't draw error squiggles.
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+  "css.validate": false,
+  "scss.validate": false,
+  "editor.fontFamily": "'Geist Mono', ui-monospace, monospace",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 1.7,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "none",
+  "workbench.colorTheme": "AlxPro Dark",
+  "files.associations": {
+    "*.ansi": "plaintext"
+  }
+}

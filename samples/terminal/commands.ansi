@@ -1,0 +1,19 @@
+\033[32m❯\033[0m \033[35mcd\033[0m \033[32m~/acme\033[0m && \033[35mgit\033[0m \033[32mpull --rebase\033[0m && \033[35mpnpm\033[0m \033[32minstall\033[0m
+\033[32m❯\033[0m \033[35mpnpm\033[0m \033[32mdlx shadcn@latest add button card\033[0m
+\033[32m❯\033[0m \033[35mnpx\033[0m \033[32mcreate-next-app@latest my-app --ts --tailwind --app\033[0m
+\033[32m❯\033[0m \033[35mbunx\033[0m \033[32m--bun vite build\033[0m
+\033[32m❯\033[0m \033[35msudo\033[0m \033[32mrm -rf node_modules .next\033[0m
+\033[32m❯\033[0m \033[35mmkdir\033[0m \033[32m-p src/components\033[0m && \033[35mtouch\033[0m \033[32msrc/components/button.tsx\033[0m
+\033[32m❯\033[0m \033[35mcat\033[0m \033[32mpackage.json\033[0m | \033[35mgrep\033[0m \033[32m-i "next"\033[0m
+\033[32m❯\033[0m \033[35mcurl\033[0m \033[32m-fsSL https://example.com/install.sh\033[0m | \033[35mbash\033[0m
+\033[32m❯\033[0m \033[35mdocker\033[0m \033[32mcompose up -d --build\033[0m
+\033[32m❯\033[0m \033[35mgh\033[0m \033[32mpr create --fill --base main\033[0m
+\033[32m❯\033[0m \033[35mvercel\033[0m \033[32mdeploy --prod\033[0m
+\033[32m❯\033[0m \033[35mecho\033[0m \033[32m"NEXT_PUBLIC_SITE_URL=http://localhost:3000"\033[0m > \033[32m.env.local\033[0m
+\033[32m❯\033[0m \033[35mls\033[0m \033[32m-la\033[0m
+total 48
+drwxr-xr-x  12 you  staff   384 Oct 25 17:20 \033[1;34m.\033[0m
+drwxr-xr-x   8 you  staff   256 Oct 25 09:02 \033[1;34m..\033[0m
+-rw-r--r--   1 you  staff    44 Oct 25 17:20 .env.local
+drwxr-xr-x   6 you  staff   192 Oct 25 17:18 \033[1;34msrc\033[0m
+-rwxr-xr-x   1 you  staff   812 Oct 25 16:40 \033[1;32msetup.sh\033[0m

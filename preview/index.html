@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Theme Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;600&display=swap"
+    />
+    <style>
+      /*
+       * The page's own chrome is neutral and follows the system. The blocks
+       * are drawn only with colors read from the theme files, so what you see
+       * inside a block is what the theme says, nothing else.
+       */
+      :root {
+        color-scheme: light dark;
+        --bg: #fafafa;
+        --surface: #ffffff;
+        --border: #eaeaea;
+        --text: #171717;
+        --muted: #666666;
+        --pressed: #171717;
+        --pressed-text: #ffffff;
+        --pass: #287a3a;
+        --warn: #a35200;
+        --fail: #cb2a2e;
+        --code-size: 13px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #000000;
+          --surface: #0a0a0a;
+          --border: #242424;
+          --text: #ededed;
+          --muted: #a1a1a1;
+          --pressed: #ededed;
+          --pressed-text: #0a0a0a;
+          --pass: #62c073;
+          --warn: #f2a20d;
+          --fail: #ff6166;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 14px/1.5 Geist, ui-sans-serif, system-ui, sans-serif;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 24px;
+        padding: 12px 24px;
+        background: color-mix(in srgb, var(--bg) 85%, transparent);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border);
+      }
+      h1 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .group {
+        display: inline-flex;
+        padding: 2px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+      .group button,
+      .chip {
+        border: 0;
+        border-radius: 6px;
+        padding: 4px 10px;
+        background: transparent;
+        color: var(--muted);
+        font: inherit;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .group button:hover,
+      .chip:hover {
+        color: var(--text);
+      }
+      .group button[aria-pressed="true"],
+      .chip[aria-pressed="true"] {
+        background: var(--pressed);
+        color: var(--pressed-text);
+      }
+      .spacer {
+        flex: 1;
+      }
+      .hint {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 12px 24px 0;
+      }
+      .chip {
+        border: 1px solid var(--border);
+        font-family: "Geist Mono", ui-monospace, monospace;
+        font-size: 12px;
+      }
+      main {
+        padding: 16px 24px 64px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      @media (max-width: 1100px) {
+        .row {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      @media (max-width: 640px) {
+        header,
+        .chips,
+        main {
+          padding-inline: 16px;
+        }
+      }
+
+      /* A block: everything inside reads from the theme through variables. */
+      .block {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--b-border);
+        border-radius: 8px;
+        background: var(--b-bg);
+        color: var(--b-fg);
+      }
+      .block ::selection {
+        background: var(--b-selection);
+      }
+      .block-head {
+        display: flex;
+        gap: 8px;
+        align-items: baseline;
+        padding: 8px 12px;
+        border-bottom: 1px solid var(--b-border);
+        background: var(--b-head);
+        color: var(--b-muted);
+        font: 12px "Geist Mono", ui-monospace, monospace;
+      }
+      .block-head b {
+        color: var(--b-fg);
+        font-weight: 400;
+      }
+      .block-head span:last-child {
+        margin-left: auto;
+      }
+      .code {
+        overflow-x: auto;
+        padding: 8px 0;
+        font: var(--code-size) / 1.7 "Geist Mono", ui-monospace, monospace;
+      }
+      .lines {
+        width: max-content;
+        min-width: 100%;
+      }
+      .line {
+        display: flex;
+        padding-right: 16px;
+        white-space: pre;
+      }
+      .line:hover {
+        background: var(--b-line);
+      }
+      .ln {
+        flex-shrink: 0;
+        width: 3.5em;
+        padding-right: 1.25em;
+        text-align: right;
+        color: var(--b-ln);
+        user-select: none;
+      }
+      .line:hover .ln {
+        color: var(--b-ln-active);
+      }
+      .term {
+        overflow-x: auto;
+        padding: 12px 16px;
+        font: var(--code-size) / 1.6 "Geist Mono", ui-monospace, monospace;
+      }
+      .term .line:hover {
+        background: none;
+      }
+      .term .line {
+        min-height: 1.6em;
+      }
+      .cursor {
+        display: inline-block;
+        width: 1ch;
+        height: 1.2em;
+        vertical-align: text-bottom;
+        background: var(--b-cursor);
+      }
+
+      /* Hovering a token shows how the theme colored it. */
+      #tip {
+        position: fixed;
+        z-index: 20;
+        max-width: min(440px, calc(100vw - 32px));
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--text);
+        box-shadow: 0 8px 24px rgb(0 0 0 / 16%);
+        font: 12px/1.5 "Geist Mono", ui-monospace, monospace;
+        pointer-events: none;
+      }
+      #tip[hidden] {
+        display: none;
+      }
+      #tip .swatch {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 6px;
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        vertical-align: -1px;
+      }
+      #tip ol {
+        margin: 6px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      #tip li.matched {
+        color: var(--text);
+      }
+      #tip .rule {
+        display: block;
+        color: var(--muted);
+      }
+
+      /* Palette tables. */
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      .table th,
+      .table td {
+        padding: 6px 12px;
+        border-bottom: 1px solid var(--b-border);
+        text-align: left;
+        vertical-align: middle;
+      }
+      .table th {
+        color: var(--b-muted);
+        font-weight: 400;
+      }
+      .table code {
+        font-family: "Geist Mono", ui-monospace, monospace;
+      }
+      .table .scopes {
+        color: var(--b-muted);
+        font-family: "Geist Mono", ui-monospace, monospace;
+        font-size: 11px;
+      }
+      .sample {
+        font-family: "Geist Mono", ui-monospace, monospace;
+        white-space: nowrap;
+      }
+      .badge {
+        display: inline-block;
+        min-width: 64px;
+        padding: 1px 6px;
+        border-radius: 999px;
+        border: 1px solid currentColor;
+        font-size: 11px;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .badge.aaa,
+      .badge.aa {
+        color: var(--pass);
+      }
+      .badge.large {
+        color: var(--warn);
+      }
+      .badge.fail {
+        color: var(--fail);
+      }
+      .message {
+        max-width: 640px;
+        margin: 64px auto;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+      .message code {
+        font-family: "Geist Mono", ui-monospace, monospace;
+      }
+
+      /* `?shot=…`: one block on its own, for screenshots. */
+      body.shot {
+        display: inline-block;
+        padding: 32px;
+        background: transparent;
+      }
+      body.shot header,
+      body.shot .chips,
+      body.shot #tip {
+        display: none;
+      }
+      body.shot main {
+        padding: 0;
+      }
+      body.shot .row {
+        grid-template-columns: repeat(var(--cols, 1), minmax(0, 1fr));
+        width: var(--shot-width, 880px);
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Theme preview</h1>
+      <div class="group" role="group" aria-label="Section" id="tabs">
+        <button data-tab="code">Code</button>
+        <button data-tab="terminal">Terminal</button>
+        <button data-tab="palette">Palette</button>
+      </div>
+      <div class="group" role="group" aria-label="Theme" id="modes">
+        <button data-mode="both">Both</button>
+        <button data-mode="dark">Dark</button>
+        <button data-mode="light">Light</button>
+      </div>
+      <div class="group" role="group" aria-label="Font size" id="sizes">
+        <button data-size="12">12</button>
+        <button data-size="13">13</button>
+        <button data-size="14">14</button>
+      </div>
+      <span class="spacer"></span>
+      <span class="hint">Hover a token to see its scopes · select text to see the selection color</span>
+    </header>
+    <nav class="chips" id="chips" aria-label="Samples"></nav>
+    <main id="main"><p class="hint">Loading the themes…</p></main>
+    <div id="tip" hidden></div>
+
+    <script type="module">
+      import { createHighlighter } from "https://esm.sh/shiki@3.0.0";
+
+      /* Paths are relative to this page; serve the repository's root. */
+      const THEME_FILES = {
+        dark: "../themes/vscode/alxpro-dark.json",
+        light: "../themes/vscode/alxpro-light.json",
+      };
+      const SAMPLES = "../samples/";
+
+      const ANSI = [
+        "Black", "Red", "Green", "Yellow", "Blue", "Magenta", "Cyan", "White",
+        "BrightBlack", "BrightRed", "BrightGreen", "BrightYellow",
+        "BrightBlue", "BrightMagenta", "BrightCyan", "BrightWhite",
+      ];
+      const FONT_STYLE = { 1: "italic", 2: "bold", 4: "underline", 8: "strikethrough" };
+
+      const params = new URLSearchParams(location.search);
+      const shot = params.get("shot");
+      const state = {
+        tab: params.get("tab") ?? "code",
+        mode: params.get("mode") ?? (shot ? "dark" : "both"),
+        sample: params.get("sample") ?? "all",
+        size: params.get("size") ?? "13",
+      };
+
+      const $ = (selector) => document.querySelector(selector);
+      const main = $("#main");
+      const tip = $("#tip");
+
+      function h(tag, props = {}, ...children) {
+        const el = document.createElement(tag);
+        for (const [key, value] of Object.entries(props)) {
+          if (value == null || value === false) continue;
+          if (key === "style") Object.assign(el.style, value);
+          else if (key === "vars") for (const [k, v] of Object.entries(value)) el.style.setProperty(k, v);
+          else if (key.startsWith("on")) el.addEventListener(key.slice(2), value);
+          else el.setAttribute(key, value === true ? "" : value);
+        }
+        el.append(...children.flat().filter((c) => c != null && c !== false));
+        return el;
+      }
+
+      async function fetchOk(url) {
+        const response = await fetch(url, { cache: "no-store" });
+        if (!response.ok) throw new Error(`${url} answered ${response.status}`);
+        return response;
+      }
+
+      /* ---------- Color math ---------- */
+
+      const rgbOf = (hex) => {
+        const h6 = hex.replace("#", "");
+        const full = h6.length <= 4 ? [...h6].map((c) => c + c).join("") : h6;
+        const n = (i) => parseInt(full.slice(i, i + 2), 16);
+        return { r: n(0), g: n(2), b: n(4), a: full.length === 8 ? n(6) / 255 : 1 };
+      };
+      const blend = (hex, bgHex) => {
+        const c = rgbOf(hex), b = rgbOf(bgHex);
+        const mix = (x, y) => Math.round(x * c.a + y * (1 - c.a));
+        return { r: mix(c.r, b.r), g: mix(c.g, b.g), b: mix(c.b, b.b) };
+      };
+      const luminance = ({ r, g, b }) => {
+        const lin = (v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+        return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+      };
+      function contrast(fg, bg) {
+        const a = luminance(blend(fg, bg)), b = luminance(rgbOf(bg));
+        return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+      }
+      function badge(ratio) {
+        const [cls, label] =
+          ratio >= 7 ? ["aaa", "AAA"] : ratio >= 4.5 ? ["aa", "AA"] : ratio >= 3 ? ["large", "AA large"] : ["fail", "fail"];
+        return h("span", { class: `badge ${cls}`, title: "WCAG 2 contrast against the background" }, `${ratio.toFixed(2)} ${label}`);
+      }
+
+      /* ---------- Block frame ---------- */
+
+      function frame(theme, kind, title, body) {
+        const c = theme.colors;
+        const terminal = kind === "terminal";
+        return h(
+          "figure",
+          {
+            class: "block",
+            vars: {
+              "--b-bg": terminal ? c["terminal.background"] : c["editor.background"],
+              "--b-fg": terminal ? c["terminal.foreground"] : c["editor.foreground"],
+              "--b-border": c["panel.border"] ?? c["tab.border"] ?? "transparent",
+              "--b-head": c["editorGroupHeader.tabsBackground"] ?? c["editor.background"],
+              "--b-muted": c["editorLineNumber.foreground"],
+              "--b-ln": c["editorLineNumber.foreground"],
+              "--b-ln-active": c["editorLineNumber.activeForeground"] ?? c["editor.foreground"],
+              "--b-line": c["editor.lineHighlightBackground"] ?? "transparent",
+              "--b-selection": terminal ? c["terminal.selectionBackground"] : c["editor.selectionBackground"],
+              "--b-cursor": c["terminalCursor.foreground"] ?? c["editorCursor.foreground"],
+              "--pass": c["terminal.ansiGreen"],
+              "--warn": c["terminal.ansiYellow"],
+              "--fail": c["terminal.ansiRed"],
+            },
+          },
+          h("figcaption", { class: "block-head" }, h("b", {}, title), h("span", {}, kind), h("span", {}, theme.name)),
+          body
+        );
+      }
+
+      /* ---------- Code ---------- */
+
+      const explanations = new WeakMap();
+
+      /* `range` is `[first, last]`, 1-indexed: the whole file is highlighted,
+         so a slice is colored exactly as it is in context. */
+      function codeBlock(highlighter, theme, sample, source, range) {
+        const { tokens } = highlighter.codeToTokens(source.replace(/\n$/, ""), {
+          lang: sample.lang,
+          theme: theme.name,
+          includeExplanation: true,
+        });
+        const first = range ? range[0] : 1;
+        const shown = range ? tokens.slice(range[0] - 1, range[1]) : tokens;
+        const lines = shown.map((line, i) =>
+          h(
+            "div",
+            { class: "line" },
+            h("span", { class: "ln" }, String(i + first)),
+            h(
+              "span",
+              {},
+              line.length ? null : "​",
+              line.map((token) => {
+                const style = { color: token.color };
+                if (token.fontStyle & 1) style.fontStyle = "italic";
+                if (token.fontStyle & 2) style.fontWeight = "600";
+                const deco = [token.fontStyle & 4 && "underline", token.fontStyle & 8 && "line-through"].filter(Boolean);
+                if (deco.length) style.textDecoration = deco.join(" ");
+                const span = h("span", { class: "tok", style }, token.content);
+                explanations.set(span, token);
+                return span;
+              })
+            )
+          )
+        );
+        return frame(theme, sample.lang, sample.file, h("div", { class: "code" }, h("div", { class: "lines" }, lines)));
+      }
+
+      function showTip(event) {
+        const token = explanations.get(event.target);
+        if (!token) return void (tip.hidden = true);
+        const part = token.explanation?.find((p) => p.content.trim()) ?? token.explanation?.[0];
+        const styles = Object.entries(FONT_STYLE).filter(([bit]) => token.fontStyle & bit).map(([, name]) => name);
+        const scopes = (part?.scopes ?? []).slice().reverse();
+        tip.replaceChildren(
+          h("div", {}, h("span", { class: "swatch", style: { background: token.color } }), `${token.color ?? "—"}`, styles.length ? `  ${styles.join(", ")}` : ""),
+          h("div", { style: { color: "var(--muted)" } }, JSON.stringify(token.content.length > 40 ? token.content.slice(0, 40) + "…" : token.content)),
+          h(
+            "ol",
+            {},
+            scopes.map(({ scopeName, themeMatches }) => {
+              const rule = themeMatches?.at(-1);
+              const ruleScope = rule && [rule.scope].flat()[0];
+              return h(
+                "li",
+                { class: themeMatches?.length ? "matched" : null },
+                scopeName,
+                rule && h("span", { class: "rule" }, `↳ rule “${ruleScope}”${[rule.scope].flat().length > 1 ? ` +${[rule.scope].flat().length - 1}` : ""}: ${rule.settings.foreground ?? ""} ${rule.settings.fontStyle ?? ""}`)
+              );
+            })
+          )
+        );
+        tip.hidden = false;
+        moveTip(event);
+      }
+      function moveTip(event) {
+        if (tip.hidden) return;
+        const { innerWidth: w, innerHeight: vh } = window;
+        const rect = tip.getBoundingClientRect();
+        const x = Math.min(event.clientX + 14, w - rect.width - 16);
+        const y = event.clientY + 18 + rect.height > vh ? event.clientY - rect.height - 12 : event.clientY + 18;
+        tip.style.left = `${Math.max(16, x)}px`;
+        tip.style.top = `${Math.max(16, y)}px`;
+      }
+      main.addEventListener("pointerover", showTip);
+      main.addEventListener("pointermove", moveTip);
+      main.addEventListener("pointerleave", () => (tip.hidden = true));
+
+      /* ---------- Terminal ---------- */
+
+      /* The sample files spell the escape character `\033` so that `printf %b`
+         can print them; `\\` is a literal backslash. */
+      const decode = (text) => text.replace(/\\(033|\\)/g, (_, x) => (x === "033" ? "\x1b" : "\\"));
+
+      function xterm256(n) {
+        if (n >= 232) {
+          const v = 8 + (n - 232) * 10;
+          return `rgb(${v},${v},${v})`;
+        }
+        const levels = [0, 95, 135, 175, 215, 255];
+        const i = n - 16;
+        return `rgb(${levels[Math.floor(i / 36)]},${levels[Math.floor(i / 6) % 6]},${levels[i % 6]})`;
+      }
+
+      function applySgr(previous, params) {
+        const s = { ...previous };
+        const codes = params === "" ? [0] : params.split(";").map(Number);
+        for (let i = 0; i < codes.length; i++) {
+          const n = codes[i];
+          if (n === 0) for (const key of Object.keys(s)) delete s[key];
+          else if (n === 1) s.bold = true;
+          else if (n === 2) s.dim = true;
+          else if (n === 3) s.italic = true;
+          else if (n === 4) s.underline = true;
+          else if (n === 7) s.inverse = true;
+          else if (n === 8) s.hidden = true;
+          else if (n === 9) s.strike = true;
+          else if (n === 22) delete s.bold, delete s.dim;
+          else if (n === 23) delete s.italic;
+          else if (n === 24) delete s.underline;
+          else if (n === 27) delete s.inverse;
+          else if (n === 29) delete s.strike;
+          else if (n >= 30 && n <= 37) s.fg = { index: n - 30 };
+          else if (n >= 90 && n <= 97) s.fg = { index: n - 82 };
+          else if (n === 39) delete s.fg;
+          else if (n >= 40 && n <= 47) s.bg = { index: n - 40 };
+          else if (n >= 100 && n <= 107) s.bg = { index: n - 92 };
+          else if (n === 49) delete s.bg;
+          else if (n === 38 || n === 48) {
+            const key = n === 38 ? "fg" : "bg";
+            if (codes[i + 1] === 5) {
+              const v = codes[i + 2];
+              s[key] = v < 16 ? { index: v } : { rgb: xterm256(v) };
+              i += 2;
+            } else if (codes[i + 1] === 2) {
+              s[key] = { rgb: `rgb(${codes[i + 2]},${codes[i + 3]},${codes[i + 4]})` };
+              i += 4;
+            }
+          }
+        }
+        return s;
+      }
+
+      function parseAnsi(text) {
+        const lines = [[]];
+        const sgr = /\x1b\[([0-9;]*)m/g;
+        let style = {}, last = 0, match;
+        const push = (chunk) =>
+          chunk.split("\n").forEach((part, i) => {
+            if (i) lines.push([]);
+            if (part) lines.at(-1).push({ text: part, style });
+          });
+        while ((match = sgr.exec(text))) {
+          push(text.slice(last, match.index));
+          style = applySgr(style, match[1]);
+          last = sgr.lastIndex;
+        }
+        push(text.slice(last));
+        return lines;
+      }
+
+      function terminalBlock(theme, name, source) {
+        const c = theme.colors;
+        const palette = ANSI.map((n) => c[`terminal.ansi${n}`]);
+        const paint = (color, fallback) => (!color ? fallback : "index" in color ? palette[color.index] : color.rgb);
+        const runStyle = (s) => {
+          let fg = paint(s.fg, c["terminal.foreground"]);
+          let bg = paint(s.bg, "transparent");
+          if (s.inverse) [fg, bg] = [s.bg ? bg : c["terminal.background"], s.fg ? fg : c["terminal.foreground"]];
+          return {
+            color: fg,
+            background: bg,
+            fontWeight: s.bold ? "600" : null,
+            opacity: s.dim ? "0.5" : null,
+            fontStyle: s.italic ? "italic" : null,
+            textDecoration: [s.underline && "underline", s.strike && "line-through"].filter(Boolean).join(" ") || null,
+            visibility: s.hidden ? "hidden" : null,
+          };
+        };
+        const lines = parseAnsi(decode(source.replace(/\n$/, ""))).map((runs) =>
+          h("div", { class: "line" }, runs.map((run) => h("span", { style: runStyle(run.style) }, run.text)))
+        );
+        lines.push(
+          h("div", { class: "line" }, h("span", { style: { color: palette[2] } }, "❯ "), h("span", { class: "cursor", "aria-hidden": "true" }))
+        );
+        return frame(theme, "terminal", name, h("div", { class: "term" }, lines));
+      }
+
+      /* ---------- Palette ---------- */
+
+      function paletteBlock(theme) {
+        const c = theme.colors;
+        const editorBg = c["editor.background"];
+        const roles = new Map();
+        for (const rule of theme.tokenColors) {
+          const color = rule.settings.foreground?.toUpperCase();
+          if (!color) continue;
+          const entry = roles.get(color) ?? { scopes: [], styles: new Set() };
+          entry.scopes.push([rule.scope].flat()[0]);
+          if (rule.settings.fontStyle) entry.styles.add(rule.settings.fontStyle);
+          roles.set(color, entry);
+        }
+
+        const swatch = (color) =>
+          h("span", { class: "swatch", style: { display: "inline-block", width: "14px", height: "14px", borderRadius: "3px", background: color, border: "1px solid var(--b-border)", verticalAlign: "-2px", marginRight: "8px" } });
+
+        const syntax = h(
+          "table",
+          { class: "table" },
+          h("tr", {}, h("th", {}, "Syntax color"), h("th", {}, "Sample"), h("th", {}, "Contrast"), h("th", {}, "First scope of each rule using it")),
+          [...roles].map(([color, { scopes }]) =>
+            h(
+              "tr",
+              {},
+              h("td", {}, swatch(color), h("code", {}, color)),
+              h("td", { class: "sample", style: { color } }, "const x = 1;"),
+              h("td", {}, badge(contrast(color, editorBg))),
+              h("td", { class: "scopes" }, scopes.join(" · "))
+            )
+          )
+        );
+
+        const termBg = c["terminal.background"];
+        const terminal = h(
+          "table",
+          { class: "table" },
+          h("tr", {}, h("th", {}, "Terminal color"), h("th", {}, "Sample"), h("th", {}, "Contrast"), h("th", {}, "")),
+          ["foreground", ...ANSI.map((n) => `ansi${n}`)].map((key) => {
+            const color = c[`terminal.${key}`];
+            if (!color) return null;
+            /* The color nearest the background is expected to fail: programs
+               use it for backgrounds and hidden text, not for words. */
+            const nearBackground = theme.type === "dark" ? ["ansiBlack"] : ["ansiWhite", "ansiBrightWhite"];
+            const note = nearBackground.includes(key) ? "≈ background by convention" : "";
+            return h(
+              "tr",
+              {},
+              h("td", {}, swatch(color), h("code", {}, key)),
+              h("td", { class: "sample", style: { color } }, "✓ Ready in 812ms"),
+              h("td", {}, badge(contrast(color, termBg))),
+              h("td", { class: "scopes" }, `${color} ${note}`)
+            );
+          })
+        );
+
+        const ui = h(
+          "table",
+          { class: "table" },
+          h("tr", {}, h("th", {}, "Workbench color"), h("th", {}, "Value"), h("th", {}, ""), h("th", {}, "")),
+          Object.entries(c)
+            .filter(([key]) => !key.startsWith("terminal."))
+            .map(([key, value]) => h("tr", {}, h("td", {}, swatch(value), h("code", {}, key)), h("td", {}, h("code", {}, value)), h("td", {}), h("td", {})))
+        );
+
+        return frame(theme, "palette", "Colors and contrast", h("div", { style: { overflowX: "auto" } }, syntax, terminal, ui));
+      }
+
+      /* ---------- Page ---------- */
+
+      function syncControls(manifest) {
+        for (const b of document.querySelectorAll("#tabs button")) b.setAttribute("aria-pressed", String(b.dataset.tab === state.tab));
+        for (const b of document.querySelectorAll("#modes button")) b.setAttribute("aria-pressed", String(b.dataset.mode === state.mode));
+        for (const b of document.querySelectorAll("#sizes button")) b.setAttribute("aria-pressed", String(b.dataset.size === state.size));
+        document.documentElement.style.setProperty("--code-size", `${state.size}px`);
+
+        const names = state.tab === "code" ? manifest.code.map((s) => s.file) : state.tab === "terminal" ? manifest.terminal : [];
+        $("#chips").replaceChildren(
+          ...(names.length
+            ? ["all", ...names].map((name) =>
+                h("button", { class: "chip", "aria-pressed": String(state.sample === name), onclick: () => update({ sample: name }) }, name === "all" ? "All" : name)
+              )
+            : [])
+        );
+        if (!shot) {
+          const query = new URLSearchParams({ tab: state.tab, mode: state.mode, sample: state.sample, size: state.size });
+          history.replaceState(null, "", `?${query}`);
+        }
+      }
+
+      let render = () => {};
+      function update(patch) {
+        if ("tab" in patch && patch.tab !== state.tab) patch.sample = "all";
+        Object.assign(state, patch);
+        render();
+      }
+      $("#tabs").addEventListener("click", (e) => e.target.dataset.tab && update({ tab: e.target.dataset.tab }));
+      $("#modes").addEventListener("click", (e) => e.target.dataset.mode && update({ mode: e.target.dataset.mode }));
+      $("#sizes").addEventListener("click", (e) => e.target.dataset.size && update({ size: e.target.dataset.size }));
+
+      try {
+        const [dark, light, manifest] = await Promise.all([
+          fetchOk(THEME_FILES.dark).then((r) => r.json()),
+          fetchOk(THEME_FILES.light).then((r) => r.json()),
+          fetchOk(`${SAMPLES}manifest.json`).then((r) => r.json()),
+        ]);
+        const themes = { dark, light };
+
+        const [codeSources, termSources, highlighter] = await Promise.all([
+          Promise.all(manifest.code.map((s) => fetchOk(SAMPLES + s.file).then((r) => r.text()))),
+          Promise.all(manifest.terminal.map((n) => fetchOk(`${SAMPLES}terminal/${n}.ansi`).then((r) => r.text()))),
+          createHighlighter({ themes: [dark, light], langs: [...new Set(manifest.code.map((s) => s.lang))] }),
+        ]);
+        const code = new Map(manifest.code.map((s, i) => [s.file, { sample: s, source: codeSources[i] }]));
+        const term = new Map(manifest.terminal.map((n, i) => [n, termSources[i]]));
+
+        render = () => {
+          const modes = state.mode === "both" ? ["dark", "light"] : [state.mode];
+          const row = (make) => h("div", { class: "row", vars: { "--cols": String(modes.length) } }, modes.map((m) => make(themes[m])));
+
+          if (shot) {
+            document.body.classList.add("shot");
+            if (params.get("width")) document.body.style.setProperty("--shot-width", `${params.get("width")}px`);
+            const [kind, name] = shot.includes(":") ? shot.split(":") : ["code", shot];
+            const range = params.get("lines")?.split("-").map(Number);
+            main.replaceChildren(
+              kind === "terminal"
+                ? row((t) => terminalBlock(t, name, term.get(name)))
+                : row((t) => codeBlock(highlighter, t, code.get(name).sample, code.get(name).source, range))
+            );
+            document.documentElement.dataset.ready = "true";
+            return;
+          }
+
+          syncControls(manifest);
+          if (state.tab === "palette") {
+            main.replaceChildren(row(paletteBlock));
+          } else if (state.tab === "terminal") {
+            const names = state.sample === "all" ? manifest.terminal : [state.sample];
+            main.replaceChildren(...names.map((n) => row((t) => terminalBlock(t, n, term.get(n)))));
+          } else {
+            const files = state.sample === "all" ? manifest.code.map((s) => s.file) : [state.sample];
+            main.replaceChildren(...files.map((f) => row((t) => codeBlock(highlighter, t, code.get(f).sample, code.get(f).source))));
+          }
+          document.documentElement.dataset.ready = "true";
+        };
+        render();
+      } catch (error) {
+        console.error(error);
+        main.replaceChildren(
+          h(
+            "div",
+            { class: "message" },
+            h("p", {}, h("strong", {}, "The preview couldn’t load its files.")),
+            h("p", {}, "It reads the theme JSON and the samples over HTTP, so open it through a local server from the repository’s root:"),
+            h("p", {}, h("code", {}, "npm run preview  →  http://localhost:4321/preview/")),
+            h("p", { class: "hint" }, String(error))
+          )
+        );
+      }
+    </script>
+  </body>
+</html>

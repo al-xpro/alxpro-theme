@@ -1,0 +1,24 @@
+\033[32m❯\033[0m \033[35mpnpm\033[0m \033[32mbuild\033[0m
+
+   \033[1;35m▲ Next.js 16.0.0\033[0m
+
+   Creating an optimized production build ...
+ \033[32m✓\033[0m Compiled successfully in 4.2s
+ \033[32m✓\033[0m Linting and checking validity of types
+ \033[32m✓\033[0m Collecting page data
+ \033[32m✓\033[0m Generating static pages (8/8)
+ \033[32m✓\033[0m Finalizing page optimization
+
+\033[4mRoute (app)\033[0m                                 \033[4mSize\033[0m  \033[4mFirst Load JS\033[0m
+┌ ○ /                                    5.31 kB         \033[32m118 kB\033[0m
+├ ○ /_not-found                            977 B         \033[32m103 kB\033[0m
+├ ƒ /api/subscribe                         143 B         \033[32m102 kB\033[0m
+├ ● /blog/[slug]                         2.14 kB         \033[33m215 kB\033[0m
+├   ├ /blog/hello-world
+├   └ /blog/shipping-a-theme
+└ ○ /pricing                             3.02 kB         \033[31m316 kB\033[0m
++ First Load JS shared by all             102 kB
+
+○  (Static)   \033[2mprerendered as static content\033[0m
+●  (SSG)      \033[2mprerendered as static HTML (uses generateStaticParams)\033[0m
+ƒ  (Dynamic)  \033[2mserver-rendered on demand\033[0m

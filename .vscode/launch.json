@@ -1,0 +1,13 @@
+{
+  // F5: a new VS Code window with these themes installed, opened on the samples.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Try the themes",
+      "type": "extensionHost",
+      "request": "launch",
+      "preLaunchTask": "npm: build",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}", "${workspaceFolder}/samples"]
+    }
+  ]
+}

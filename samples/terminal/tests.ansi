@@ -1,0 +1,28 @@
+\033[32m❯\033[0m \033[35mpnpm\033[0m \033[32mtest\033[0m
+
+\033[7;36m RUN \033[0m \033[36mv3.2.4 \033[0m\033[90m/Users/you/acme\033[0m
+
+ \033[32m✓\033[0m lib/format.test.ts \033[90m(6 tests)\033[0m \033[2m4ms\033[0m
+ \033[32m✓\033[0m lib/slug.test.ts \033[90m(12 tests)\033[0m \033[2m7ms\033[0m
+ \033[33m❯\033[0m app/actions.test.ts \033[90m(4 tests | \033[31m1 failed\033[90m)\033[0m \033[2m31ms\033[0m
+   \033[32m✓\033[0m createPost > rejects a signed-out user \033[2m3ms\033[0m
+\033[31m   × createPost > validates the slug\033[0m \033[2m12ms\033[0m
+     \033[31m→ expected 'Hello World' to match /^[a-z0-9]+(?:-[a-z0-9]+)*$/\033[0m
+
+\033[31m⎯⎯⎯⎯⎯⎯⎯ \033[1mFailed Tests 1\033[0;31m ⎯⎯⎯⎯⎯⎯⎯\033[0m
+
+\033[7;31m FAIL \033[0m app/actions.test.ts \033[2m>\033[0m createPost \033[2m>\033[0m validates the slug
+\033[31m\033[1mAssertionError\033[0m\033[31m: expected 'Hello World' to match /^[a-z0-9]+(?:-[a-z0-9]+)*$/\033[0m
+
+\033[32m- Expected\033[0m
+\033[31m+ Received\033[0m
+
+\033[36m ❯ app/actions.test.ts:\033[2m24:31\033[0m
+    \033[90m 22|\033[0m   const result = await createPost(form);
+    \033[90m 23|\033[0m
+    \033[90m 24|\033[0m   expect(result.slug).toMatch(SLUG);
+    \033[90m   |\033[0m                               \033[31m^\033[0m
+
+\033[2m Test Files \033[0m \033[1;31m1 failed\033[0m\033[2m | \033[0m\033[1;32m2 passed\033[0m\033[90m (3)\033[0m
+\033[2m      Tests \033[0m \033[1;31m1 failed\033[0m\033[2m | \033[0m\033[1;32m21 passed\033[0m\033[90m (22)\033[0m
+\033[2m   Duration \033[0m 612ms

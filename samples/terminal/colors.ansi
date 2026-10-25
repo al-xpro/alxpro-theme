@@ -1,0 +1,7 @@
+\033[1mNormal \033[0m  \033[30m■ black\033[0m  \033[31m■ red\033[0m  \033[32m■ green\033[0m  \033[33m■ yellow\033[0m  \033[34m■ blue\033[0m  \033[35m■ magenta\033[0m  \033[36m■ cyan\033[0m  \033[37m■ white\033[0m
+\033[1mBright \033[0m  \033[90m■ black\033[0m  \033[91m■ red\033[0m  \033[92m■ green\033[0m  \033[93m■ yellow\033[0m  \033[94m■ blue\033[0m  \033[95m■ magenta\033[0m  \033[96m■ cyan\033[0m  \033[97m■ white\033[0m
+\033[1mBg     \033[0m  \033[40m       \033[41m     \033[42m       \033[43m        \033[44m      \033[45m         \033[46m      \033[47m       \033[0m
+\033[1mBg brt \033[0m  \033[100m       \033[101m     \033[102m       \033[103m        \033[104m      \033[105m         \033[106m      \033[107m       \033[0m
+\033[1mStyles \033[0m  \033[1mbold\033[0m  \033[2mdim\033[0m  \033[3mitalic\033[0m  \033[4munderline\033[0m  \033[7minverse\033[0m  \033[9mstrike\033[0m  \033[1;32mbold green\033[0m  \033[2;36mdim cyan\033[0m
+\033[1mBadges \033[0m  \033[7;32m PASS \033[0m \033[7;31m FAIL \033[0m \033[7;33m WARN \033[0m \033[7;36m RUN \033[0m \033[7;34m INFO \033[0m \033[7;35m DEBUG \033[0m \033[30;47m black on white \033[0m \033[37;40m white on black \033[0m
+\033[1m256    \033[0m  \033[38;5;208m38;5;208 orange\033[0m  \033[38;5;244m38;5;244 gray\033[0m  \033[38;2;255;0;128m38;2 truecolor\033[0m  (fixed colors: not changed by the theme)

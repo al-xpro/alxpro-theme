@@ -1,0 +1,15 @@
+import { Callout } from "@/components/callout";
+
+export const metadata = { title: "MDX in the theme" };
+
+# {metadata.title}
+
+MDX mixes **Markdown** with components:
+
+<Callout type="warning" title={`Heads up`}>
+  Expressions like {1 + 1} and props are JSX.
+</Callout>
+
+```bash
+pnpm add @next/mdx
+```

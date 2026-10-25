@@ -1,0 +1,20 @@
+diff --git a/app/page.tsx b/app/page.tsx
+index 3b18e51..a1f9c2d 100644
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -1,9 +1,11 @@
+-import { getPosts } from "@/lib/posts";
++import { getPosts, type Post } from "@/lib/posts";
++import { Suspense } from "react";
+ 
+ export default async function Page() {
+-  const posts = await getPosts();
++  const posts: Post[] = await getPosts({ limit: 10 });
+   return (
+     <main>
+-      <PostList posts={posts} />
++      <Suspense fallback={<p>Loading…</p>}>
++        <PostList posts={posts} />
++      </Suspense>
+     </main>
+   );

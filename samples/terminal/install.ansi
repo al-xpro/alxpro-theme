@@ -1,0 +1,20 @@
+\033[32m❯\033[0m \033[35mpnpm\033[0m \033[32madd zod\033[0m
+\033[7;33m WARN \033[0m deprecated inflight@1.0.6: This module is not supported, and leaks memory.
+Packages: \033[32m+1\033[0m
+\033[32m+\033[0m
+Progress: resolved \033[34m412\033[0m, reused \033[34m401\033[0m, downloaded \033[34m1\033[0m, added \033[34m1\033[0m, \033[1;32mdone\033[0m
+
+\033[1mdependencies:\033[0m
+\033[32m+\033[0m zod \033[90m4.1.12\033[0m
+
+Done in 1.8s using pnpm v10.18.0
+
+\033[32m❯\033[0m \033[35mnpm\033[0m \033[32maudit\033[0m
+\033[1m# npm audit report\033[0m
+
+\033[1mpostcss\033[0m  <8.4.31
+Severity: \033[33mmoderate\033[0m
+PostCSS line return parsing error - \033[36mhttps://github.com/advisories/GHSA-7fh5-64p2-3v2j\033[0m
+fix available via `npm audit fix`
+
+\033[1m1\033[0m \033[33mmoderate\033[0m severity vulnerability

@@ -1,0 +1,23 @@
+{
+  "code": [
+    { "file": "react-component.tsx", "lang": "tsx" },
+    { "file": "server-action.ts", "lang": "ts" },
+    { "file": "types.ts", "lang": "ts" },
+    { "file": "next.config.mjs", "lang": "js" },
+    { "file": "globals.css", "lang": "css" },
+    { "file": "styles.scss", "lang": "scss" },
+    { "file": "index.html", "lang": "html" },
+    { "file": "sample-package.json", "lang": "json" },
+    { "file": "tsconfig.sample.json", "lang": "jsonc" },
+    { "file": "ci.yml", "lang": "yaml" },
+    { "file": "article.md", "lang": "markdown" },
+    { "file": "post.mdx", "lang": "mdx" },
+    { "file": "commands.sh", "lang": "bash" },
+    { "file": "setup.sh", "lang": "bash" },
+    { "file": "change.diff", "lang": "diff" },
+    { "file": "query.sql", "lang": "sql" },
+    { "file": "Card.vue", "lang": "vue" },
+    { "file": "Counter.svelte", "lang": "svelte" }
+  ],
+  "terminal": ["colors", "commands", "next-dev", "next-build", "install", "git", "tests", "lint"]
+}

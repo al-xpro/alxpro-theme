@@ -1,0 +1,15 @@
+\033[32m❯\033[0m \033[35mpnpm\033[0m \033[32mlint\033[0m
+
+\033[4m/Users/you/acme/components/pricing-card.tsx\033[0m
+  \033[2m12:7\033[0m   \033[33mwarning\033[0m  'unused' is assigned a value but never used    \033[2m@typescript-eslint/no-unused-vars\033[0m
+  \033[2m31:15\033[0m  \033[31merror\033[0m    React Hook "useState" is called conditionally  \033[2mreact-hooks/rules-of-hooks\033[0m
+
+\033[1;31m✖ 2 problems (1 error, 1 warning)\033[0m
+
+\033[32m❯\033[0m \033[35mpnpm\033[0m \033[32mtsc --noEmit\033[0m
+\033[96mapp/page.tsx\033[0m:\033[93m8\033[0m:\033[93m11\033[0m - \033[91merror\033[0m\033[90m TS2322: \033[0mType 'string' is not assignable to type 'number'.
+
+\033[7m8\033[0m   const total: number = formatPrice(price);
+\033[7m \033[0m           \033[91m~~~~~\033[0m
+
+Found 1 error in app/page.tsx\033[90m:8\033[0m

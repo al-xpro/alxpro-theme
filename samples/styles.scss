@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "sass:math";
+
+$breakpoints: (sm: 640px, md: 768px, lg: 1024px);
+$gutter: 16px !default;
+
+@mixin respond($name) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+// Block, element, modifier.
+.grid {
+  display: grid;
+  gap: math.div($gutter, 2);
+
+  &__item {
+    padding: $gutter;
+
+    &--active {
+      outline: 2px solid currentColor;
+    }
+  }
+
+  @include respond(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+%visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.sr-only {
+  @extend %visually-hidden;
+}

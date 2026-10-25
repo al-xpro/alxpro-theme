@@ -1,0 +1,20 @@
+\033[1;36m~/acme\033[0m \033[90mon\033[0m \033[1;35mmain\033[0m \033[31m[!?]\033[0m \033[90mvia\033[0m \033[1;32mnode v24.11.0\033[0m
+\033[32m❯\033[0m \033[35mpnpm\033[0m \033[32mdev\033[0m
+
+> acme-web@0.1.0 dev /Users/you/acme
+> next dev --turbopack
+
+   \033[1;35m▲ Next.js 16.0.0\033[0m (Turbopack)
+   - Local:        \033[36mhttp://localhost:3000\033[0m
+   - Network:      \033[36mhttp://192.168.1.20:3000\033[0m
+   - Environments: .env.local
+
+ \033[32m✓\033[0m Starting...
+ \033[32m✓\033[0m Ready in 812ms
+ \033[37m○\033[0m Compiling / ...
+ GET / \033[32m200\033[0m in 1204ms
+ GET /api/subscribe \033[33m404\033[0m in 38ms
+ \033[33m⚠\033[0m Fast Refresh had to perform a full reload due to a runtime error.
+ \033[31m⨯\033[0m \033[31mError: Cannot read properties of undefined (reading 'map')\033[0m
+    at PricingCard (\033[36mcomponents/pricing-card.tsx:46:19\033[0m)
+ POST /api/subscribe \033[31m500\033[0m in 92ms

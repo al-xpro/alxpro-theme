@@ -1,0 +1,32 @@
+\033[32m❯\033[0m \033[35mgit\033[0m \033[32mstatus\033[0m
+On branch feat/12-pricing-table
+Your branch is ahead of '\033[1morigin/feat/12-pricing-table\033[0m' by 1 commit.
+
+Changes to be committed:
+        \033[32mmodified:   app/pricing/page.tsx\033[0m
+        \033[32mnew file:   components/pricing-card.tsx\033[0m
+
+Changes not staged for commit:
+        \033[31mmodified:   app/globals.css\033[0m
+
+Untracked files:
+        \033[31msamples/\033[0m
+
+\033[32m❯\033[0m \033[35mgit\033[0m \033[32mlog --oneline --graph -5\033[0m
+\033[31m*\033[0m \033[33ma1f9c2d\033[0m \033[33m(\033[1;36mHEAD\033[0;33m -> \033[1;32mfeat/12-pricing-table\033[0;33m)\033[0m feat(pricing): add the annual toggle
+\033[31m*\033[0m \033[33m3b18e51\033[0m \033[33m(\033[1;31morigin/main\033[0;33m, \033[1;32mmain\033[0;33m)\033[0m fix(nav): close the menu on route change
+\033[31m|\033[32m\\\033[0m
+\033[31m|\033[0m \033[32m*\033[0m \033[33m7c0d4e2\033[0m docs(readme): add the screenshots
+\033[31m|\033[32m/\033[0m
+\033[31m*\033[0m \033[33m09ab113\033[0m \033[33m(\033[1;33mtag: v1.0.0\033[0;33m)\033[0m Initial public release
+
+\033[32m❯\033[0m \033[35mgit\033[0m \033[32mdiff app/globals.css\033[0m
+\033[1mdiff --git a/app/globals.css b/app/globals.css\033[0m
+\033[1mindex 8e1c2a4..f03b9d1 100644\033[0m
+\033[1m--- a/app/globals.css\033[0m
+\033[1m+++ b/app/globals.css\033[0m
+\033[36m@@ -12,7 +12,7 @@\033[0m :root {
+   --background: #ffffff;
+\033[31m-  --foreground: #000000;\033[0m
+\033[32m+  --foreground: #171717;\033[0m
+   --header-height: calc(4rem + env(safe-area-inset-top));
