@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { palettes } from "../src/palette.ts";
 import { vscodeTheme } from "../src/formats/vscode.ts";
 import { terminalFormats } from "../src/formats/terminals.ts";
+import { bannerSvg } from "../src/banner.ts";
 
 /*
  * Writes every theme in `themes/` from `src/palette.ts`. The folder is wiped
@@ -24,6 +25,9 @@ function write(folder: string, name: string, contents: string) {
   writeFileSync(file, contents);
   written.push(relative(root, file));
 }
+
+/* The walkthrough's banner ships with the VS Code themes. */
+write("vscode", "welcome.svg", bannerSvg());
 
 for (const palette of palettes) {
   write("vscode", `${palette.slug}.json`, `${JSON.stringify(vscodeTheme(palette), null, 2)}\n`);

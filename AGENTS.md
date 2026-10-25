@@ -15,6 +15,8 @@
   lists in `src/formats/vscode.ts`, not the colors.
 - **Releases:** bump `version` in `package.json`, add a `CHANGELOG.md` entry, merge, and
   tag `vX.Y.Z`. The release workflow does the rest.
+- **The banner lives in `src/banner.ts`.** `install.sh` keeps its own copy because it runs
+  alone through `curl | bash`; change both, and `npm run check` confirms they match.
 
 ---
 
