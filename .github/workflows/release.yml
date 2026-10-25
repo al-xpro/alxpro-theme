@@ -1,0 +1,61 @@
+name: Release
+
+# Pushing a tag like v1.2.0 builds everything, creates the GitHub release with
+# the .vsix and the terminal themes, and publishes to the marketplaces whose
+# token is set as a repository secret.
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: The tag matches package.json
+        run: test "v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
+      - run: npm run typecheck
+      - run: |
+          npm run build
+          git diff --exit-code -- themes/
+      - run: npm run check
+      - name: Package
+        run: |
+          mkdir -p dist
+          npx vsce package --no-dependencies --out "dist/alxpro-theme-$GITHUB_REF_NAME.vsix"
+          zip -r "dist/alxpro-theme-$GITHUB_REF_NAME-all-themes.zip" themes LICENSE
+      - name: Release notes from CHANGELOG.md
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v v="$version" '$0 ~ "^## "v" " {on=1; next} /^## / {on=0} on' CHANGELOG.md > dist/notes.md
+          test -s dist/notes.md
+      - name: GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.vsix dist/*.zip --title "$GITHUB_REF_NAME" --notes-file dist/notes.md
+
+      # Open VSX (Cursor, Windsurf, VSCodium). The token is an Open VSX access token.
+      - name: Publish to Open VSX
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+        if: env.OVSX_PAT != ''
+        run: npx ovsx publish "dist/alxpro-theme-$GITHUB_REF_NAME.vsix" -p "$OVSX_PAT"
+
+      # VS Code Marketplace. Azure DevOps retires global personal access tokens
+      # on 1 December 2026; after that this step needs Microsoft Entra ID
+      # (`vsce publish --azure-credential` after `azure/login`) instead.
+      - name: Publish to the VS Code Marketplace
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        if: env.VSCE_PAT != ''
+        run: npx vsce publish --packagePath "dist/alxpro-theme-$GITHUB_REF_NAME.vsix" -p "$VSCE_PAT"
