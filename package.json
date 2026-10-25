@@ -1,0 +1,81 @@
+{
+  "name": "alxpro-theme",
+  "displayName": "AlxPro Theme",
+  "description": "Black-and-white dark and light themes for web development, with matching colors for eight terminals.",
+  "version": "1.0.0",
+  "publisher": "alxpro",
+  "author": {
+    "name": "Alex Prostamo",
+    "url": "https://github.com/al-xpro"
+  },
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#000000",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/al-xpro/alxpro-theme"
+  },
+  "homepage": "https://github.com/al-xpro/alxpro-theme#readme",
+  "bugs": {
+    "url": "https://github.com/al-xpro/alxpro-theme/issues"
+  },
+  "keywords": [
+    "theme",
+    "color-theme",
+    "dark",
+    "light",
+    "black",
+    "white",
+    "minimal",
+    "monochrome",
+    "high-contrast",
+    "web",
+    "react",
+    "nextjs",
+    "typescript",
+    "tailwind",
+    "terminal"
+  ],
+  "categories": [
+    "Themes"
+  ],
+  "engines": {
+    "vscode": "^1.80.0",
+    "node": ">=22.6"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "AlxPro Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vscode/alxpro-dark.json"
+      },
+      {
+        "label": "AlxPro Light",
+        "uiTheme": "vs",
+        "path": "./themes/vscode/alxpro-light.json"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/build.ts",
+    "check": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/check.ts",
+    "typecheck": "tsc",
+    "preview": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/serve.ts",
+    "images": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/images.ts",
+    "package": "mkdir -p dist && vsce package --no-dependencies --out dist/",
+    "vscode:prepublish": "npm run build && npm run check"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@vscode/vsce": "^4.0.0",
+    "ovsx": "^1.3.0",
+    "playwright": "^1.64.1",
+    "typescript": "^7.0.2"
+  }
+}

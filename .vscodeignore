@@ -1,0 +1,8 @@
+# Only the themes, the icon and the docs ship in the .vsix; everything else is for building them.
+**
+!package.json
+!README.md
+!CHANGELOG.md
+!LICENSE
+!images/icon.png
+!themes/vscode/**
