@@ -1,0 +1,208 @@
+# AlxPro Theme
+
+Black-and-white dark and light themes for web development, with matching colors for
+VS Code, Cursor and eight terminals.
+
+[![CI](https://github.com/al-xpro/alxpro-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/al-xpro/alxpro-theme/actions/workflows/ci.yml)
+
+![AlxPro Dark and AlxPro Light, side by side, on a React component](images/hero.png)
+
+- **Pure black and pure white backgrounds**, with white or black text, and a few accents
+  that mean one thing each: pink keywords, green strings, blue values, purple functions and
+  types, amber props and properties.
+- **Made for the web stack**: TSX, TypeScript, CSS and Tailwind, HTML, JSON, YAML,
+  Markdown, MDX, shell, Vue and Svelte, tested on real files in [`samples/`](samples/).
+- **Shell commands read at a glance**: the program is purple, everything it's given is
+  green, and each `&&` or `|` starts over.
+- **Readable everywhere**: every syntax and terminal text color is at least 4.5:1 (WCAG AA)
+  against its background, checked in CI.
+- **The same colors in your terminal**: Terminal.app, iTerm2, Ghostty, Warp, Windows
+  Terminal, Alacritty, Kitty, WezTerm, and VS Code's own terminal.
+- **The whole editor is themed**: tabs, sidebar, menus, widgets, diff, git and the status
+  bar, so nothing falls back to VS Code's blue and purple.
+
+| | |
+| --- | --- |
+| ![CSS](images/css.png) | ![Shell commands](images/shell.png) |
+| ![Markdown](images/markdown.png) | ![Terminal](images/terminal.png) |
+
+## Install
+
+### VS Code
+
+Search for **AlxPro Theme** in the Extensions view, or:
+
+```bash
+code --install-extension alxpro.alxpro-theme
+```
+
+Then run **Preferences: Color Theme** and pick **AlxPro Dark** or **AlxPro Light**. To follow
+the system's appearance:
+
+```jsonc
+// settings.json
+"window.autoDetectColorScheme": true,
+"workbench.preferredDarkColorTheme": "AlxPro Dark",
+"workbench.preferredLightColorTheme": "AlxPro Light"
+```
+
+### Cursor, Windsurf, VSCodium
+
+These install from [Open VSX](https://open-vsx.org/extension/alxpro/alxpro-theme): search
+for **AlxPro Theme** in the Extensions view.
+
+Every release also attaches the `.vsix` on the
+[Releases page](https://github.com/al-xpro/alxpro-theme/releases). Install it with
+**Extensions: Install from VSIX…**.
+
+### Terminals
+
+Every theme is in [`themes/`](themes/), and also zipped on the
+[Releases page](https://github.com/al-xpro/alxpro-theme/releases).
+
+| Terminal | File | How |
+| --- | --- | --- |
+| Terminal.app | [`terminal-app/`](themes/terminal-app/) | Double-click the `.terminal` file, then **Settings → Profiles → Default**. |
+| iTerm2 | [`iterm2/`](themes/iterm2/) | **Settings → Profiles → Colors → Color Presets → Import…**, then pick it from the same menu. |
+| Ghostty | [`ghostty/`](themes/ghostty/) | Copy both files to `~/.config/ghostty/themes/`, then set `theme = light:AlxPro Light,dark:AlxPro Dark` in your Ghostty config. |
+| Warp | [`warp/`](themes/warp/) | Copy the `.yaml` files to `~/.warp/themes/`, then **Settings → Appearance → Themes**. |
+| Windows Terminal | [`windows-terminal/`](themes/windows-terminal/) | Add each JSON object to `"schemes"` in `settings.json`, then set a profile's `"colorScheme"` to `"AlxPro Dark"`. |
+| Alacritty | [`alacritty/`](themes/alacritty/) | Copy the file next to your config and add `import = ["alxpro-dark.toml"]` under `[general]`. |
+| Kitty | [`kitty/`](themes/kitty/) | Copy the file to `~/.config/kitty/` and add `include alxpro-dark.conf` to `kitty.conf`. |
+| WezTerm | [`wezterm/`](themes/wezterm/) | Copy the file to `~/.config/wezterm/colors/` and set `config.color_scheme = "AlxPro Dark"`. |
+
+VS Code's integrated terminal uses the same colors without any setup.
+
+#### Command colors in your shell
+
+A terminal theme sets the 16 colors. What your shell does with them while you type is your
+shell's choice. To get the purple command and green arguments in the terminal too:
+
+**zsh**, with [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting),
+after it's loaded in `~/.zshrc`:
+
+```zsh
+for style in command builtin alias function precommand hashed-command arg0; do
+  ZSH_HIGHLIGHT_STYLES[$style]='fg=magenta'
+done
+for style in default path globbing single-hyphen-option double-hyphen-option \
+  single-quoted-argument double-quoted-argument dollar-quoted-argument; do
+  ZSH_HIGHLIGHT_STYLES[$style]='fg=green'
+done
+```
+
+**fish**:
+
+```fish
+set -U fish_color_command magenta
+set -U fish_color_param green
+set -U fish_color_option green
+set -U fish_color_quote green
+```
+
+![Commands in the terminal, dark and light](images/terminal-commands.png)
+
+## Recommended settings
+
+The themes are drawn with [Geist Mono](https://vercel.com/font) in mind
+(`brew install --cask font-geist-mono`, or download it). A theme can't set a font, so:
+
+```jsonc
+// settings.json
+"editor.fontFamily": "'Geist Mono', ui-monospace, monospace",
+"editor.fontSize": 14,
+"editor.lineHeight": 1.7,
+"terminal.integrated.fontFamily": "'Geist Mono'"
+```
+
+Semantic highlighting is off on purpose, so VS Code colors code exactly as
+[Shiki](https://shiki.style) does on the web. Bracket pair colorization is themed to match
+the punctuation, so brackets stay plain unless one is unmatched.
+
+## The palette
+
+| Role | Dark | Light |
+| --- | --- | --- |
+| Background | `#000000` | `#FFFFFF` |
+| Text, punctuation, parameters | `#FFFFFF` | `#000000` |
+| Comments | `#A0A0A0` | `#666666` |
+| Keywords, operators, JSON keys, `${…}`, CSS pseudo-classes | `#F6608F` | `#BD2864` |
+| Strings, tags and components, shell arguments | `#62C073` | `#287A3A` |
+| Numbers, constants, CSS properties, links | `#52A8FF` | `#0068D6` |
+| Functions, types, CSS classes, shell commands | `#BF7AF0` | `#781FBB` |
+| Props and properties | `#F2A20D` | `#A35200` |
+| CSS units, deletions | `#FF6166` | `#CB2A2E` |
+
+Every value lives in [`src/palette.ts`](src/palette.ts).
+
+## On the web
+
+The VS Code themes are also [Shiki](https://shiki.style) themes, so your blog or docs can
+match your editor. That covers Shiki, rehype-pretty-code, Expressive Code (Astro and
+Starlight), Fumadocs and Nextra:
+
+```ts
+import { createHighlighter } from "shiki";
+import alxproDark from "./alxpro-dark.json" with { type: "json" };
+import alxproLight from "./alxpro-light.json" with { type: "json" };
+
+const highlighter = await createHighlighter({
+  themes: [alxproDark, alxproLight],
+  langs: ["tsx", "css", "bash"],
+});
+const html = highlighter.codeToHtml(code, {
+  lang: "tsx",
+  themes: { dark: "AlxPro Dark", light: "AlxPro Light" },
+});
+```
+
+## How the themes are made
+
+```text
+src/palette.ts            every color, for both themes: syntax, terminal, editor UI
+src/formats/vscode.ts     which scopes each syntax role colors, and the editor's UI colors
+src/formats/terminals.ts  the 16 terminal colors in each terminal's format
+scripts/build.ts          writes themes/ from the above
+scripts/check.ts          contrast, badges, and (on macOS) Terminal.app read-back
+themes/                   generated, committed, never edited by hand
+samples/, preview/        test files and a page that renders them with the real themes
+```
+
+```bash
+npm install
+npm run build     # regenerate themes/ after editing src/
+npm run check     # contrast and file checks
+npm run preview   # http://localhost:4321/preview/: hover a token to see its scopes
+npm run images    # re-render the screenshots in images/
+npm run package   # build the .vsix into dist/
+```
+
+To try a change in VS Code, open the repository and press **F5**. That starts an Extension
+Development Host with the themes installed. Open [`samples/`](samples/) there, and run
+[`samples/terminal/show.sh`](samples/terminal/show.sh) in any terminal to see its colors.
+
+Found a wrong color? [Open an issue](https://github.com/al-xpro/alxpro-theme/issues/new/choose).
+Include the scope from **Developer: Inspect Editor Tokens and Scopes**.
+
+## How this was built
+
+The palette was first built for the code blocks on my own site, then published as a
+standalone theme in October 2026. It's developed in the open with an agentic workflow: I
+write issues as specs, agents open the pull requests, and I review and merge every change.
+The rules are in [`AGENTS.md`](AGENTS.md).
+
+## Roadmap
+
+See the [open issues](https://github.com/al-xpro/alxpro-theme/issues). Ideas include a Zed
+theme, an npm package for Shiki, and submitting the terminal themes to
+[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes), which Ghostty
+ships.
+
+## Credits
+
+The colors are inspired by Vercel's [Geist](https://vercel.com/geist) design system. This
+project is not affiliated with or endorsed by Vercel.
+
+## License
+
+[MIT](LICENSE) © 2026 Alex Prostamo
