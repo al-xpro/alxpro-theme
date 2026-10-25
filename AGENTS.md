@@ -10,9 +10,11 @@
 - **Before a pull request:** `npm run typecheck`, `npm run build`, `npm run check`. For any
   visible change, attach before/after images: `npm run images`, or screenshots from
   `npm run preview`.
-- **A color is wrong in some language?** Find the scope with the preview (hover the token)
-  or with **Developer: Inspect Editor Tokens and Scopes** in VS Code, then change the scope
-  lists in `src/formats/vscode.ts`, not the colors.
+- **A color is wrong in some language?** Find the scope with `npm run scopes -- <file>`,
+  which tokenizes with the VS Code and extensions installed on the machine (the Shiki
+  preview can differ from VS Code), or with **Developer: Inspect Editor Tokens and Scopes**.
+  Then change the scope lists in `src/formats/vscode.ts`, not the colors.
+- **Amber is for props and attributes in markup only.** Don't spread it to other roles.
 - **Releases:** bump `version` in `package.json`, add a `CHANGELOG.md` entry, merge, and
   tag `vX.Y.Z`. The release workflow does the rest.
 
