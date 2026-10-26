@@ -87,6 +87,8 @@ export type Ui = {
   surface: Hex;
   /** Code blocks in Markdown and chat, and the find widget around its input. */
   block: Hex;
+  /** Inputs, and what VS Code draws with them, such as your own messages in a chat. */
+  field: Hex;
   hover: Hex;
   /** A selected row. */
   active: Hex;
@@ -177,6 +179,7 @@ export const dark: Palette = {
     background: "#000000",
     surface: "#0A0A0A",
     block: "#000000",
+    field: "#0A0A0A",
     hover: "#111111",
     active: "#1F1F1F",
     border: "#1F1F1F",
@@ -258,6 +261,7 @@ export const light: Palette = {
     background: "#FFFFFF",
     surface: "#FFFFFF",
     block: "#FAFAFA",
+    field: "#FAFAFA",
     hover: "#F5F5F5",
     active: "#EBEBEB",
     border: "#EAEAEA",
