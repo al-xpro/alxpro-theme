@@ -87,6 +87,12 @@ export type Ui = {
   surface: Hex;
   /** Code blocks in Markdown and chat, and the find widget around its input. */
   block: Hex;
+  /** Inputs, and what VS Code draws with them, such as your own messages in a chat. */
+  field: Hex;
+  /** The border of an input field that has focus; every other control focuses in the accent. */
+  fieldFocus: Hex;
+  /** The title bar, and the header of modal editors such as Settings and Profiles. */
+  header: Hex;
   hover: Hex;
   /** A selected row. */
   active: Hex;
@@ -177,6 +183,9 @@ export const dark: Palette = {
     background: "#000000",
     surface: "#0A0A0A",
     block: "#000000",
+    field: "#0A0A0A",
+    fieldFocus: "#515151",
+    header: "#000000",
     hover: "#111111",
     active: "#1F1F1F",
     border: "#1F1F1F",
@@ -188,9 +197,9 @@ export const dark: Palette = {
     faint: "#666666",
     accent: "#52A8FF",
     onAccent: "#000000",
-    button: "#EDEDED",
+    button: "#FFFFFF",
     onButton: "#000000",
-    buttonHover: "#FFFFFF",
+    buttonHover: "#FFFFFFCC",
     secondary: "#1F1F1F",
     secondaryHover: "#2E2E2E",
     lineHighlight: "#1A1A1A",
@@ -258,6 +267,9 @@ export const light: Palette = {
     background: "#FFFFFF",
     surface: "#FFFFFF",
     block: "#FAFAFA",
+    field: "#FAFAFA",
+    fieldFocus: "#CFCFCF",
+    header: "#FAFAFA",
     hover: "#F5F5F5",
     active: "#EBEBEB",
     border: "#EAEAEA",
@@ -269,9 +281,9 @@ export const light: Palette = {
     faint: "#A1A1A1",
     accent: "#0068D6",
     onAccent: "#FFFFFF",
-    button: "#171717",
+    button: "#000000",
     onButton: "#FFFFFF",
-    buttonHover: "#383838",
+    buttonHover: "#000000CC",
     secondary: "#EBEBEB",
     secondaryHover: "#E0E0E0",
     lineHighlight: "#F5F5F5",
