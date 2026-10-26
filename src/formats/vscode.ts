@@ -47,18 +47,22 @@ export function vscodeTheme(p: Palette) {
       "sash.hoverBorder": u.accent,
       "textLink.foreground": u.accent,
       "textLink.activeForeground": u.accent,
-      "textPreformat.foreground": s.string,
-      "textPreformat.background": u.hover,
-      "textBlockQuote.background": u.surface,
+      /* Inline code in chat, hovers and the Markdown preview: the text color on the
+         background, in a gray border where the view draws one. */
+      "textPreformat.foreground": u.strong,
+      "textPreformat.background": u.background,
+      "textPreformat.border": u.borderStrong,
+      /* Quotes and callouts in the Markdown preview, like your messages in a chat. */
+      "textBlockQuote.background": u.field,
       "textBlockQuote.border": u.borderStrong,
-      "textCodeBlock.background": u.surface,
+      "textCodeBlock.background": u.block,
       "textSeparator.foreground": u.border,
       "toolbar.hoverBackground": u.hover,
 
       /* Window: title bar, activity bar, side bar, status bar, panel. */
-      "titleBar.activeBackground": u.background,
+      "titleBar.activeBackground": u.header,
       "titleBar.activeForeground": u.text,
-      "titleBar.inactiveBackground": u.background,
+      "titleBar.inactiveBackground": u.header,
       "titleBar.inactiveForeground": u.subtle,
       "titleBar.border": u.border,
       "commandCenter.background": u.surface,
@@ -73,8 +77,14 @@ export function vscodeTheme(p: Palette) {
       "activityBar.border": u.border,
       "activityBar.activeBorder": u.strong,
       "activityBar.activeBackground": u.background,
-      "activityBarBadge.background": u.accent,
-      "activityBarBadge.foreground": u.onAccent,
+      /* Badges are the text color with the background's color inside:
+         white with black numbers in the dark theme, black with white in the light. */
+      "activityBarBadge.background": u.strong,
+      "activityBarBadge.foreground": u.background,
+      "activityErrorBadge.background": u.error,
+      "activityErrorBadge.foreground": u.background,
+      "activityWarningBadge.background": u.warning,
+      "activityWarningBadge.foreground": u.background,
       "activityBarTop.foreground": u.strong,
       "activityBarTop.inactiveForeground": u.subtle,
       "activityBarTop.activeBorder": u.strong,
@@ -91,11 +101,10 @@ export function vscodeTheme(p: Palette) {
       "statusBar.noFolderBackground": u.background,
       "statusBar.noFolderForeground": u.muted,
       "statusBar.noFolderBorder": u.border,
-      /* Debugging is the one time the bar should be loud: amber, with the
-         background's color for text, which is 5.5:1 or better in both themes. */
-      "statusBar.debuggingBackground": u.warning,
+      /* Debugging inverts the bar: white on black, black on white. */
+      "statusBar.debuggingBackground": u.strong,
       "statusBar.debuggingForeground": u.background,
-      "statusBar.debuggingBorder": u.warning,
+      "statusBar.debuggingBorder": u.strong,
       "statusBarItem.hoverBackground": u.hover,
       "statusBarItem.activeBackground": u.active,
       "statusBarItem.remoteBackground": u.background,
@@ -124,8 +133,10 @@ export function vscodeTheme(p: Palette) {
       "list.hoverForeground": u.text,
       "list.focusBackground": u.active,
       "list.focusForeground": u.strong,
-      "list.focusOutline": u.accent,
-      "list.inactiveFocusOutline": u.borderStrong,
+      /* A picked row is marked by its background alone; no outline around it. */
+      "list.focusOutline": "#00000000",
+      "list.inactiveFocusOutline": "#00000000",
+      "list.focusAndSelectionOutline": "#00000000",
       "list.highlightForeground": u.accent,
       "list.focusHighlightForeground": u.accent,
       "list.errorForeground": u.error,
@@ -159,10 +170,11 @@ export function vscodeTheme(p: Palette) {
       "breadcrumb.foreground": u.subtle,
       "breadcrumb.focusForeground": u.text,
       "breadcrumb.activeSelectionForeground": u.strong,
-      "breadcrumbPicker.background": u.surface,
+      "breadcrumbPicker.background": u.background,
 
       /* Inputs and buttons. */
-      "input.background": u.surface,
+      /* Chats draw your own messages with the input color, so it can't be the panel's. */
+      "input.background": u.field,
       "input.foreground": u.text,
       "input.border": u.borderStrong,
       "input.placeholderForeground": u.subtle,
@@ -175,14 +187,14 @@ export function vscodeTheme(p: Palette) {
       "inputValidation.warningBorder": u.warning,
       "inputValidation.infoBackground": u.surface,
       "inputValidation.infoBorder": u.accent,
-      "dropdown.background": u.surface,
+      "dropdown.background": u.field,
       "dropdown.listBackground": u.surface,
       "dropdown.foreground": u.text,
       "dropdown.border": u.borderStrong,
-      "checkbox.background": u.surface,
+      "checkbox.background": u.field,
       "checkbox.foreground": u.text,
       "checkbox.border": u.borderStrong,
-      "checkbox.selectBackground": u.surface,
+      "checkbox.selectBackground": u.field,
       "checkbox.selectBorder": u.accent,
       "button.background": u.button,
       "button.foreground": u.onButton,
@@ -198,11 +210,11 @@ export function vscodeTheme(p: Palette) {
       "extensionButton.prominentBackground": u.button,
       "extensionButton.prominentForeground": u.onButton,
       "extensionButton.prominentHoverBackground": u.buttonHover,
-      "extensionBadge.remoteBackground": u.accent,
-      "extensionBadge.remoteForeground": u.onAccent,
+      "extensionBadge.remoteBackground": u.strong,
+      "extensionBadge.remoteForeground": u.background,
       "extensionIcon.starForeground": u.warning,
-      "badge.background": u.active,
-      "badge.foreground": u.text,
+      "badge.background": u.strong,
+      "badge.foreground": u.background,
       "progressBar.background": u.accent,
       "keybindingLabel.background": u.hover,
       "keybindingLabel.foreground": u.text,
@@ -214,61 +226,110 @@ export function vscodeTheme(p: Palette) {
       "scrollbarSlider.activeBackground": alpha(u.strong, "33"),
 
       /* Floating widgets: suggestions, hovers, quick input, menus, notifications, peek. */
-      "editorWidget.background": u.surface,
+      /* The find widget, rename box and the like: the block color around an
+         input that keeps the surface color, so the field stands out. */
+      "editorWidget.background": u.block,
       "editorWidget.foreground": u.text,
       "editorWidget.border": u.border,
       "editorWidget.resizeBorder": u.accent,
-      "editorSuggestWidget.background": u.surface,
+      "editorSuggestWidget.background": u.background,
       "editorSuggestWidget.foreground": u.text,
       "editorSuggestWidget.border": u.border,
       "editorSuggestWidget.selectedBackground": u.active,
       "editorSuggestWidget.selectedForeground": u.strong,
       "editorSuggestWidget.highlightForeground": u.accent,
       "editorSuggestWidget.focusHighlightForeground": u.accent,
-      "editorHoverWidget.background": u.surface,
+      "editorHoverWidget.background": u.background,
       "editorHoverWidget.foreground": u.text,
       "editorHoverWidget.border": u.border,
-      "editorHoverWidget.statusBarBackground": u.surface,
-      "quickInput.background": u.surface,
+      "editorHoverWidget.statusBarBackground": u.background,
+      "quickInput.background": u.background,
       "quickInput.foreground": u.text,
-      "quickInputTitle.background": u.surface,
+      "quickInputTitle.background": u.background,
       "quickInputList.focusBackground": u.active,
       "quickInputList.focusForeground": u.strong,
       "pickerGroup.border": u.border,
       "pickerGroup.foreground": u.accent,
-      "menu.background": u.surface,
+      "menu.background": u.background,
       "menu.foreground": u.text,
       "menu.border": u.border,
       "menu.selectionBackground": u.active,
       "menu.selectionForeground": u.strong,
       "menu.separatorBackground": u.border,
       "menubar.selectionBackground": u.hover,
-      "notifications.background": u.surface,
+      "notifications.background": u.background,
       "notifications.foreground": u.text,
       "notifications.border": u.border,
       "notificationCenter.border": u.border,
-      "notificationCenterHeader.background": u.surface,
+      "notificationCenterHeader.background": u.background,
       "notificationToast.border": u.border,
       "notificationLink.foreground": u.accent,
       "notificationsErrorIcon.foreground": u.error,
       "notificationsWarningIcon.foreground": u.warning,
       "notificationsInfoIcon.foreground": u.info,
-      "debugToolBar.background": u.surface,
+      "debugToolBar.background": u.background,
       "debugToolBar.border": u.border,
       "debugIcon.breakpointForeground": u.error,
       "peekView.border": u.accent,
-      "peekViewEditor.background": u.surface,
-      "peekViewEditorGutter.background": u.surface,
+      "peekViewEditor.background": u.background,
+      "peekViewEditorGutter.background": u.background,
       "peekViewEditor.matchHighlightBackground": u.findMatchOther,
-      "peekViewResult.background": u.surface,
+      "peekViewResult.background": u.background,
       "peekViewResult.selectionBackground": u.active,
       "peekViewResult.selectionForeground": u.strong,
       "peekViewResult.matchHighlightBackground": u.findMatchOther,
       "peekViewResult.lineForeground": u.muted,
       "peekViewResult.fileForeground": u.text,
-      "peekViewTitle.background": u.surface,
+      "peekViewTitle.background": u.background,
       "peekViewTitleLabel.foreground": u.text,
       "peekViewTitleDescription.foreground": u.muted,
+      /* Chats: your messages, and the field you type them in, which focuses in
+         gray like every input rather than in the accent. */
+      "chat.requestBackground": u.field,
+      "chat.requestBubbleBackground": u.field,
+      "chat.requestBubbleHoverBackground": u.hover,
+      "chat.requestBorder": u.borderStrong,
+      "inlineChat.background": u.background,
+      "inlineChat.border": u.border,
+      "inlineChatInput.background": u.field,
+      "inlineChatInput.border": u.borderStrong,
+      "inlineChatInput.focusBorder": u.fieldFocus,
+      "editorActionList.background": u.background,
+
+      /* The Agents window ("Open in Agents"): the same surfaces as the rest of VS Code. */
+      "agents.background": u.background,
+      "agentsGradient.tintColor": "#00000000",
+      "agentsPanel.background": u.background,
+      "agentsPanel.foreground": u.text,
+      "agentsPanel.border": u.border,
+      "agentsDetail.background": u.background,
+      "agentsBottomPanel.border": u.border,
+      "agentsCard.border": u.border,
+      "agentsChatInput.background": u.field,
+      "agentsChatInput.foreground": u.text,
+      "agentsChatInput.border": u.borderStrong,
+      "agentsChatInput.focusBorder": u.fieldFocus,
+      "agentsChatInput.placeholderForeground": u.subtle,
+      "agentsNewSessionButton.background": u.button,
+      "agentsNewSessionButton.foreground": u.onButton,
+      "agentsNewSessionButton.hoverBackground": u.buttonHover,
+      "agentsNewSessionButton.border": "#00000000",
+      "agentsBadge.background": u.strong,
+      "agentsBadge.foreground": u.background,
+      "agentsUnreadBadge.background": u.strong,
+      "agentsUnreadBadge.foreground": u.background,
+      "activeSessionView.background": u.background,
+      "activeSessionView.foreground": u.text,
+      "inactiveSessionView.background": u.background,
+      "inactiveSessionView.foreground": u.muted,
+      "agentSessionReadIndicator.foreground": u.subtle,
+      "agentSessionSelectedBadge.border": u.strong,
+      "agentSessionSelectedUnfocusedBadge.border": u.borderStrong,
+      "agentStatusIndicator.background": u.active,
+      "agentFeedbackEditorWidget.background": u.background,
+      "agentFeedbackEditorWidget.border": u.border,
+      "agentFeedbackInputWidget.border": u.borderStrong,
+
       "settings.headerForeground": u.strong,
       "settings.modifiedItemIndicator": u.accent,
       "settings.focusedRowBackground": u.hover,
@@ -436,18 +497,12 @@ export function vscodeTheme(p: Palette) {
         "punctuation.separator.statement.or",
       ]),
       // A string's quotes are part of the string, not punctuation.
-      rule(s.string, [
-        "string",
-        "string.quoted",
-        "string.template",
-        "markup.inline.raw",
-        "punctuation.definition.string",
-      ]),
+      rule(s.string, ["string", "string.quoted", "string.template", "punctuation.definition.string"]),
       rule(s.escape, ["constant.character.escape", "punctuation.definition.template-expression"]),
       rule(s.regex, ["string.regexp", "constant.other.character-class.regexp"]),
-      /* No `variable.other.constant`: the TypeScript grammar gives it to every
-         name declared with `const`, but only where it's declared, so the same
-         name was blue on one line and white on the next. */
+      /* Values, and the names that hold them: a `const` where it's declared,
+         and an object whose members are read — `event` in
+         `event.preventDefault()`, `console` in `console.log()`. */
       rule(s.constant, [
         "constant",
         "constant.numeric",
@@ -455,6 +510,8 @@ export function vscodeTheme(p: Palette) {
         "constant.other",
         "support.constant",
         "variable.other.enummember",
+        "variable.other.constant",
+        "variable.other.object",
         // A hex color's `#`, with its digits.
         "punctuation.definition.constant.css",
         "meta.diff.range",
@@ -471,6 +528,7 @@ export function vscodeTheme(p: Palette) {
         // Python calls, `re.compile(…)` and `Vital(…)` alike.
         "meta.function-call.generic",
       ]),
+      /* Components in JSX are types, not tags: `<Button>` is blue, `<button>` green. */
       rule(s.type, [
         "entity.name.type",
         "entity.name.class",
@@ -480,6 +538,9 @@ export function vscodeTheme(p: Palette) {
         "storage.type.primitive",
         "entity.name.type.module",
         "support.type.primitive",
+        "support.class.component",
+        // `FormData` in `new FormData()`: a class, though the grammar calls it a function.
+        "new.expr meta.function-call entity.name.function",
         // Go files its built-in types under `storage`, like its keywords.
         "storage.type.numeric.go",
         "storage.type.string.go",
@@ -489,9 +550,9 @@ export function vscodeTheme(p: Palette) {
         "storage.type.byte.go",
         "storage.type.uintptr.go",
       ]),
-      /* A property is amber wherever it's written and wherever it's read: the
-         key in `{ style: … }`, the member in an interface, `.checked` in
-         `e.target.checked`. The object it's read from (`e`) stays plain. */
+      /* A property is the same color wherever it's written and wherever it's
+         read: the key in `{ style: … }`, the member in an interface, `.checked`
+         in `e.target.checked`. */
       rule(s.property, [
         "variable.other.property",
         "variable.other.object.property",
@@ -506,9 +567,9 @@ export function vscodeTheme(p: Palette) {
         "entity.name.tag.yaml",
       ]),
       rule(s.parameter, ["variable.parameter", "meta.parameters variable"], "italic"),
-      rule(s.tag, ["entity.name.tag", "support.class.component", "entity.name.tag.css"]),
-      // Props in markup, the same color as properties in code.
-      rule(s.property, ["entity.other.attribute-name", "entity.other.attribute-name.jsx"]),
+      rule(s.tag, ["entity.name.tag", "entity.name.tag.css"]),
+      // Props in JSX and attributes in HTML: the one place amber is used.
+      rule(s.attribute, ["entity.other.attribute-name", "entity.other.attribute-name.jsx"]),
 
       /* CSS. */
       rule(s.selector, [
@@ -523,14 +584,25 @@ export function vscodeTheme(p: Palette) {
         "entity.other.attribute-name.pseudo-element",
         "entity.other.attribute-name.pseudo-element punctuation.definition.entity",
       ]),
+      /* Custom properties: `variable.css` in VS Code's grammar and Shiki's,
+         `variable.prop.css` in the PostCSS extension's, which replaces it. */
       rule(s.styleProperty, [
         "support.type.property-name.css",
         "support.type.vendored.property-name",
         "meta.property-value.css",
         "variable.css",
+        "variable.prop.css",
+        "variable.prop.css punctuation.definition.variable",
         "variable.argument.css",
         "meta.function.variable.css punctuation.section.function",
       ]),
+      /* Tailwind's `@theme` declares design tokens rather than styles, so its
+         variables stay plain: the first scope is the Tailwind extension's
+         grammar, the second VS Code's in a file set to Tailwind CSS. */
+      rule(s.foreground, ["meta.at-rule.theme.body.tailwind variable.css", "meta.at-rule.body.css variable.css"]),
+      /* Some grammars never close an at-rule they don't know, so a `:root`
+         after `@theme` lands inside it; a declaration block is never `@theme`. */
+      rule(s.styleProperty, ["meta.property-list.css variable.css"]),
       rule(s.unit, ["keyword.other.unit"]),
 
       /* Shell: the program, then everything it's given. Pipes, `&&` and
@@ -568,6 +640,8 @@ export function vscodeTheme(p: Palette) {
          the ones that build the page — headings, lists, quotes, fences —
          don't. */
       rule(s.heading, ["markup.heading", "entity.name.section"], "bold"),
+      // Inline code reads as text; only its backticks are marked.
+      rule(s.foreground, ["markup.inline.raw"]),
       rule(s.link, ["markup.underline.link", "string.other.link"], "underline"),
       rule(s.heading, ["punctuation.definition.heading.markdown"], "bold"),
       rule(s.punctuation, [

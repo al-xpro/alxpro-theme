@@ -16,16 +16,17 @@
     "sash.hoverBorder": "#0068D6",
     "textLink.foreground": "#0068D6",
     "textLink.activeForeground": "#0068D6",
-    "textPreformat.foreground": "#287A3A",
-    "textPreformat.background": "#F5F5F5",
-    "textBlockQuote.background": "#FFFFFF",
+    "textPreformat.foreground": "#000000",
+    "textPreformat.background": "#FFFFFF",
+    "textPreformat.border": "#D4D4D4",
+    "textBlockQuote.background": "#FAFAFA",
     "textBlockQuote.border": "#D4D4D4",
-    "textCodeBlock.background": "#FFFFFF",
+    "textCodeBlock.background": "#FAFAFA",
     "textSeparator.foreground": "#EAEAEA",
     "toolbar.hoverBackground": "#F5F5F5",
-    "titleBar.activeBackground": "#FFFFFF",
+    "titleBar.activeBackground": "#FAFAFA",
     "titleBar.activeForeground": "#171717",
-    "titleBar.inactiveBackground": "#FFFFFF",
+    "titleBar.inactiveBackground": "#FAFAFA",
     "titleBar.inactiveForeground": "#8F8F8F",
     "titleBar.border": "#EAEAEA",
     "commandCenter.background": "#FFFFFF",
@@ -40,8 +41,12 @@
     "activityBar.border": "#EAEAEA",
     "activityBar.activeBorder": "#000000",
     "activityBar.activeBackground": "#FFFFFF",
-    "activityBarBadge.background": "#0068D6",
+    "activityBarBadge.background": "#000000",
     "activityBarBadge.foreground": "#FFFFFF",
+    "activityErrorBadge.background": "#CB2A2E",
+    "activityErrorBadge.foreground": "#FFFFFF",
+    "activityWarningBadge.background": "#A35200",
+    "activityWarningBadge.foreground": "#FFFFFF",
     "activityBarTop.foreground": "#000000",
     "activityBarTop.inactiveForeground": "#8F8F8F",
     "activityBarTop.activeBorder": "#000000",
@@ -58,9 +63,9 @@
     "statusBar.noFolderBackground": "#FFFFFF",
     "statusBar.noFolderForeground": "#666666",
     "statusBar.noFolderBorder": "#EAEAEA",
-    "statusBar.debuggingBackground": "#A35200",
+    "statusBar.debuggingBackground": "#000000",
     "statusBar.debuggingForeground": "#FFFFFF",
-    "statusBar.debuggingBorder": "#A35200",
+    "statusBar.debuggingBorder": "#000000",
     "statusBarItem.hoverBackground": "#F5F5F5",
     "statusBarItem.activeBackground": "#EBEBEB",
     "statusBarItem.remoteBackground": "#FFFFFF",
@@ -87,8 +92,9 @@
     "list.hoverForeground": "#171717",
     "list.focusBackground": "#EBEBEB",
     "list.focusForeground": "#000000",
-    "list.focusOutline": "#0068D6",
-    "list.inactiveFocusOutline": "#D4D4D4",
+    "list.focusOutline": "#00000000",
+    "list.inactiveFocusOutline": "#00000000",
+    "list.focusAndSelectionOutline": "#00000000",
     "list.highlightForeground": "#0068D6",
     "list.focusHighlightForeground": "#0068D6",
     "list.errorForeground": "#CB2A2E",
@@ -121,7 +127,7 @@
     "breadcrumb.focusForeground": "#171717",
     "breadcrumb.activeSelectionForeground": "#000000",
     "breadcrumbPicker.background": "#FFFFFF",
-    "input.background": "#FFFFFF",
+    "input.background": "#FAFAFA",
     "input.foreground": "#171717",
     "input.border": "#D4D4D4",
     "input.placeholderForeground": "#8F8F8F",
@@ -134,34 +140,34 @@
     "inputValidation.warningBorder": "#A35200",
     "inputValidation.infoBackground": "#FFFFFF",
     "inputValidation.infoBorder": "#0068D6",
-    "dropdown.background": "#FFFFFF",
+    "dropdown.background": "#FAFAFA",
     "dropdown.listBackground": "#FFFFFF",
     "dropdown.foreground": "#171717",
     "dropdown.border": "#D4D4D4",
-    "checkbox.background": "#FFFFFF",
+    "checkbox.background": "#FAFAFA",
     "checkbox.foreground": "#171717",
     "checkbox.border": "#D4D4D4",
-    "checkbox.selectBackground": "#FFFFFF",
+    "checkbox.selectBackground": "#FAFAFA",
     "checkbox.selectBorder": "#0068D6",
-    "button.background": "#171717",
+    "button.background": "#000000",
     "button.foreground": "#FFFFFF",
-    "button.hoverBackground": "#383838",
+    "button.hoverBackground": "#000000CC",
     "button.border": "#00000000",
     "button.separator": "#FFFFFF66",
     "button.secondaryBackground": "#EBEBEB",
     "button.secondaryForeground": "#171717",
     "button.secondaryHoverBackground": "#E0E0E0",
-    "extensionButton.background": "#171717",
+    "extensionButton.background": "#000000",
     "extensionButton.foreground": "#FFFFFF",
-    "extensionButton.hoverBackground": "#383838",
-    "extensionButton.prominentBackground": "#171717",
+    "extensionButton.hoverBackground": "#000000CC",
+    "extensionButton.prominentBackground": "#000000",
     "extensionButton.prominentForeground": "#FFFFFF",
-    "extensionButton.prominentHoverBackground": "#383838",
-    "extensionBadge.remoteBackground": "#0068D6",
+    "extensionButton.prominentHoverBackground": "#000000CC",
+    "extensionBadge.remoteBackground": "#000000",
     "extensionBadge.remoteForeground": "#FFFFFF",
     "extensionIcon.starForeground": "#A35200",
-    "badge.background": "#EBEBEB",
-    "badge.foreground": "#171717",
+    "badge.background": "#000000",
+    "badge.foreground": "#FFFFFF",
     "progressBar.background": "#0068D6",
     "keybindingLabel.background": "#F5F5F5",
     "keybindingLabel.foreground": "#171717",
@@ -171,7 +177,7 @@
     "scrollbarSlider.background": "#0000001A",
     "scrollbarSlider.hoverBackground": "#00000026",
     "scrollbarSlider.activeBackground": "#00000033",
-    "editorWidget.background": "#FFFFFF",
+    "editorWidget.background": "#FAFAFA",
     "editorWidget.foreground": "#171717",
     "editorWidget.border": "#EAEAEA",
     "editorWidget.resizeBorder": "#0068D6",
@@ -226,6 +232,48 @@
     "peekViewTitle.background": "#FFFFFF",
     "peekViewTitleLabel.foreground": "#171717",
     "peekViewTitleDescription.foreground": "#666666",
+    "chat.requestBackground": "#FAFAFA",
+    "chat.requestBubbleBackground": "#FAFAFA",
+    "chat.requestBubbleHoverBackground": "#F5F5F5",
+    "chat.requestBorder": "#D4D4D4",
+    "inlineChat.background": "#FFFFFF",
+    "inlineChat.border": "#EAEAEA",
+    "inlineChatInput.background": "#FAFAFA",
+    "inlineChatInput.border": "#D4D4D4",
+    "inlineChatInput.focusBorder": "#CFCFCF",
+    "editorActionList.background": "#FFFFFF",
+    "agents.background": "#FFFFFF",
+    "agentsGradient.tintColor": "#00000000",
+    "agentsPanel.background": "#FFFFFF",
+    "agentsPanel.foreground": "#171717",
+    "agentsPanel.border": "#EAEAEA",
+    "agentsDetail.background": "#FFFFFF",
+    "agentsBottomPanel.border": "#EAEAEA",
+    "agentsCard.border": "#EAEAEA",
+    "agentsChatInput.background": "#FAFAFA",
+    "agentsChatInput.foreground": "#171717",
+    "agentsChatInput.border": "#D4D4D4",
+    "agentsChatInput.focusBorder": "#CFCFCF",
+    "agentsChatInput.placeholderForeground": "#8F8F8F",
+    "agentsNewSessionButton.background": "#000000",
+    "agentsNewSessionButton.foreground": "#FFFFFF",
+    "agentsNewSessionButton.hoverBackground": "#000000CC",
+    "agentsNewSessionButton.border": "#00000000",
+    "agentsBadge.background": "#000000",
+    "agentsBadge.foreground": "#FFFFFF",
+    "agentsUnreadBadge.background": "#000000",
+    "agentsUnreadBadge.foreground": "#FFFFFF",
+    "activeSessionView.background": "#FFFFFF",
+    "activeSessionView.foreground": "#171717",
+    "inactiveSessionView.background": "#FFFFFF",
+    "inactiveSessionView.foreground": "#666666",
+    "agentSessionReadIndicator.foreground": "#8F8F8F",
+    "agentSessionSelectedBadge.border": "#000000",
+    "agentSessionSelectedUnfocusedBadge.border": "#D4D4D4",
+    "agentStatusIndicator.background": "#EBEBEB",
+    "agentFeedbackEditorWidget.background": "#FFFFFF",
+    "agentFeedbackEditorWidget.border": "#EAEAEA",
+    "agentFeedbackInputWidget.border": "#D4D4D4",
     "settings.headerForeground": "#000000",
     "settings.modifiedItemIndicator": "#0068D6",
     "settings.focusedRowBackground": "#F5F5F5",
@@ -434,7 +482,6 @@
         "string",
         "string.quoted",
         "string.template",
-        "markup.inline.raw",
         "punctuation.definition.string"
       ],
       "settings": {
@@ -467,6 +514,8 @@
         "constant.other",
         "support.constant",
         "variable.other.enummember",
+        "variable.other.constant",
+        "variable.other.object",
         "punctuation.definition.constant.css",
         "meta.diff.range",
         "punctuation.definition.range.diff"
@@ -500,6 +549,8 @@
         "storage.type.primitive",
         "entity.name.type.module",
         "support.type.primitive",
+        "support.class.component",
+        "new.expr meta.function-call entity.name.function",
         "storage.type.numeric.go",
         "storage.type.string.go",
         "storage.type.error.go",
@@ -509,7 +560,7 @@
         "storage.type.uintptr.go"
       ],
       "settings": {
-        "foreground": "#781FBB"
+        "foreground": "#0068D6"
       }
     },
     {
@@ -522,7 +573,7 @@
         "support.variable.property"
       ],
       "settings": {
-        "foreground": "#A35200"
+        "foreground": "#781FBB"
       }
     },
     {
@@ -548,7 +599,6 @@
     {
       "scope": [
         "entity.name.tag",
-        "support.class.component",
         "entity.name.tag.css"
       ],
       "settings": {
@@ -583,7 +633,7 @@
         "entity.other.attribute-name.pseudo-element punctuation.definition.entity"
       ],
       "settings": {
-        "foreground": "#BD2864"
+        "foreground": "#781FBB"
       }
     },
     {
@@ -592,8 +642,27 @@
         "support.type.vendored.property-name",
         "meta.property-value.css",
         "variable.css",
+        "variable.prop.css",
+        "variable.prop.css punctuation.definition.variable",
         "variable.argument.css",
         "meta.function.variable.css punctuation.section.function"
+      ],
+      "settings": {
+        "foreground": "#0068D6"
+      }
+    },
+    {
+      "scope": [
+        "meta.at-rule.theme.body.tailwind variable.css",
+        "meta.at-rule.body.css variable.css"
+      ],
+      "settings": {
+        "foreground": "#000000"
+      }
+    },
+    {
+      "scope": [
+        "meta.property-list.css variable.css"
       ],
       "settings": {
         "foreground": "#0068D6"
@@ -662,6 +731,14 @@
       "settings": {
         "foreground": "#000000",
         "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "markup.inline.raw"
+      ],
+      "settings": {
+        "foreground": "#000000"
       }
     },
     {

@@ -2,7 +2,7 @@
   "name": "alxpro-theme",
   "displayName": "AlxPro Theme",
   "description": "Black-and-white dark and light themes for web development, with matching colors for eight terminals.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "alxpro",
   "author": {
     "name": "Alex Prostamo",
@@ -60,6 +60,63 @@
         "uiTheme": "vs",
         "path": "./themes/vscode/alxpro-light.json"
       }
+    ],
+    "walkthroughs": [
+      {
+        "id": "welcome",
+        "title": "AlxPro Theme",
+        "description": "Black and white, for web development. Pick a theme, follow your system, set the font, and match your terminal.",
+        "steps": [
+          {
+            "id": "pick",
+            "title": "Pick dark or light",
+            "description": "AlxPro Dark and AlxPro Light are installed.\n[Choose a theme](command:workbench.action.selectTheme)",
+            "media": {
+              "svg": "themes/vscode/welcome.svg",
+              "altText": "ALXPRO THEME, in large letters fading from the text color"
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.selectTheme"
+            ]
+          },
+          {
+            "id": "system",
+            "title": "Follow your system's appearance",
+            "description": "Switch between AlxPro Dark and AlxPro Light when your system does. Turn on **Auto Detect Color Scheme**, then set the preferred dark and light themes.\n[Open the setting](command:workbench.action.openSettings?%5B%22window.autoDetectColorScheme%22%5D)",
+            "media": {
+              "svg": "themes/vscode/welcome.svg",
+              "altText": "ALXPRO THEME, in large letters fading from the text color"
+            },
+            "completionEvents": [
+              "onSettingChanged:window.autoDetectColorScheme"
+            ]
+          },
+          {
+            "id": "font",
+            "title": "Use Geist Mono",
+            "description": "The themes are drawn with Geist Mono in mind. Install it, then set it as the editor font: `'Geist Mono', monospace`.\n[Set the font](command:workbench.action.openSettings?%5B%22editor.fontFamily%22%5D)",
+            "media": {
+              "svg": "themes/vscode/welcome.svg",
+              "altText": "ALXPRO THEME, in large letters fading from the text color"
+            },
+            "completionEvents": [
+              "onSettingChanged:editor.fontFamily"
+            ]
+          },
+          {
+            "id": "terminal",
+            "title": "Match your terminal",
+            "description": "Run this in Terminal.app, iTerm2, Ghostty, Warp, WezTerm, Kitty or Alacritty to install the theme for it:\n`curl -fsSL https://raw.githubusercontent.com/al-xpro/alxpro-theme/main/install.sh | bash`\n[Every terminal](https://github.com/al-xpro/alxpro-theme#terminals)",
+            "media": {
+              "svg": "themes/vscode/welcome.svg",
+              "altText": "ALXPRO THEME, in large letters fading from the text color"
+            },
+            "completionEvents": [
+              "onLink:https://github.com/al-xpro/alxpro-theme#terminals"
+            ]
+          }
+        ]
+      }
     ]
   },
   "scripts": {
@@ -69,13 +126,16 @@
     "preview": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/serve.ts",
     "images": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/images.ts",
     "package": "mkdir -p dist && vsce package --no-dependencies --out dist/",
-    "vscode:prepublish": "npm run build && npm run check"
+    "vscode:prepublish": "npm run build && npm run check",
+    "scopes": "node --experimental-strip-types --disable-warning=ExperimentalWarning scripts/scopes.ts"
   },
   "devDependencies": {
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.5",
     "@vscode/vsce": "^4.0.0",
     "ovsx": "^1.3.0",
     "playwright": "^1.64.1",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.2"
   }
 }
