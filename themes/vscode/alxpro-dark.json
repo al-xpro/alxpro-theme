@@ -17,7 +17,7 @@
     "textLink.foreground": "#52A8FF",
     "textLink.activeForeground": "#52A8FF",
     "textPreformat.foreground": "#FFFFFF",
-    "textPreformat.background": "#0A0A0A",
+    "textPreformat.background": "#2A2A2A",
     "textPreformat.border": "#333333",
     "textBlockQuote.background": "#0A0A0A",
     "textBlockQuote.border": "#333333",

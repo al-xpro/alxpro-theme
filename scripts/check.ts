@@ -81,6 +81,7 @@ for (const p of palettes) {
     ["ui.onAccent on accent", ui.onAccent, ui.accent],
     ["ui.onButton on button", ui.onButton, ui.button],
     ["ui.strong on active row", ui.strong, ui.active],
+    ["inline code", ui.strong, ui.code],
     ["debugging status bar", ui.background, ui.warning],
   ];
   for (const [name, fg, bg] of pairs) {

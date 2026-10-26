@@ -89,6 +89,8 @@ export type Ui = {
   block: Hex;
   /** Inputs, and what VS Code draws with them, such as your own messages in a chat. */
   field: Hex;
+  /** Inline code in chat, hovers and the Markdown preview. */
+  code: Hex;
   /** The title bar, and the header of modal editors such as Settings and Profiles. */
   header: Hex;
   hover: Hex;
@@ -182,6 +184,7 @@ export const dark: Palette = {
     surface: "#0A0A0A",
     block: "#0A0A0A",
     field: "#0A0A0A",
+    code: "#2A2A2A",
     header: "#000000",
     hover: "#111111",
     active: "#1F1F1F",
@@ -265,6 +268,7 @@ export const light: Palette = {
     surface: "#FFFFFF",
     block: "#FAFAFA",
     field: "#FAFAFA",
+    code: "#E8E8E8",
     header: "#FAFAFA",
     hover: "#F5F5F5",
     active: "#EBEBEB",
