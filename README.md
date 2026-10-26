@@ -58,6 +58,18 @@ Every release also attaches the `.vsix` on the
 [Releases page](https://github.com/al-xpro/alxpro-theme/releases). Install it with
 **Extensions: Install from VSIX…**.
 
+### Zed
+
+Open the Extensions page (`cmd-shift-x`), search for **AlxPro Theme** and install it. Then
+pick **AlxPro Dark** or **AlxPro Light** with **theme selector: toggle** (`cmd-k cmd-t`), or
+follow the system appearance:
+
+```json
+{
+  "theme": { "mode": "system", "light": "AlxPro Light", "dark": "AlxPro Dark" }
+}
+```
+
 ### Terminals
 
 Run this in the terminal you want to theme. It works out which terminal it is, installs
@@ -187,9 +199,10 @@ src/palette.ts            every color, for both themes: syntax, terminal, editor
 src/formats/vscode.ts     which scopes each syntax role colors, and the editor's UI colors
 src/formats/terminals.ts  the 16 terminal colors in each terminal's format
 src/formats/npm.ts        the npm package: Shiki themes, terminal colors, CSS variables, types
-scripts/build.ts          writes themes/ from the above
+src/formats/zed.ts        the Zed theme: tree-sitter highlight names and Zed's UI colors
+scripts/build.ts          writes themes/, npm/ and zed/ from the above
 scripts/check.ts          contrast, badges, and (on macOS) Terminal.app read-back
-themes/, npm/dist/        generated, committed, never edited by hand
+themes/, npm/dist/, zed/  generated, committed, never edited by hand
 samples/, preview/        test files and a page that renders them with the real themes
 ```
 
@@ -207,6 +220,9 @@ To try a change in VS Code, open the repository and press **F5**. That starts an
 Development Host with the themes installed. Open [`samples/`](samples/) there, and run
 [`samples/terminal/show.sh`](samples/terminal/show.sh) in any terminal to see its colors.
 
+How each version reaches the VS Code Marketplace, Open VSX, npm, Zed and the terminal theme
+collections is in [`PUBLISHING.md`](PUBLISHING.md).
+
 Found a wrong color? [Open an issue](https://github.com/al-xpro/alxpro-theme/issues/new/choose).
 Include the scope from **Developer: Inspect Editor Tokens and Scopes**.
 
@@ -219,10 +235,9 @@ The rules are in [`AGENTS.md`](AGENTS.md).
 
 ## Roadmap
 
-See the [open issues](https://github.com/al-xpro/alxpro-theme/issues). Ideas include a Zed
-theme, an npm package for Shiki, and submitting the terminal themes to
-[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes), which Ghostty
-ships.
+See the [open issues](https://github.com/al-xpro/alxpro-theme/issues). Next: the terminal
+themes in [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes), which
+Ghostty ships, and in [Warp's themes](https://github.com/warpdotdev/themes).
 
 ## Credits
 

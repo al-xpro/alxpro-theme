@@ -1,0 +1,7 @@
+id = "alxpro-theme"
+name = "AlxPro Theme"
+version = "1.1.0"
+schema_version = 1
+authors = ["Alex Prostamo"]
+description = "Black-and-white dark and light themes for web development, with a few colors that each mean one thing."
+repository = "https://github.com/al-xpro/alxpro-theme"
