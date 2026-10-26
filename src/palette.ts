@@ -30,14 +30,16 @@ export type Syntax = {
   escape: Hex;
   /** Regular expressions. */
   regex: Hex;
-  /** Numbers, `true`, `false`, `null`, `undefined`, enum members. */
+  /** Numbers, `true`, `false`, `null`, enum members, `const` names, and the object in `event.preventDefault()`. */
   constant: Hex;
   /** Function and method names, at definition and call. */
   function: Hex;
-  /** Types, classes, interfaces. */
+  /** Types, interfaces, classes, constructors in `new X()`, and components in JSX. */
   type: Hex;
-  /** Props and properties: JSX attributes, object keys, `a.b`, interface members. */
+  /** Properties: object keys, `.checked` in `e.target.checked`, interface members. */
   property: Hex;
+  /** Props and attributes in markup: `className=`, `href=`, Vue's `:class`. Kept to markup on purpose. */
+  attribute: Hex;
   /** Keys in data files: JSON and YAML. */
   key: Hex;
   /** CSS property names, custom properties and the bare words in a value. */
@@ -81,8 +83,10 @@ export type Terminal = {
 /** The editor's chrome, as a handful of roles that `formats/vscode.ts` spreads over VS Code's keys. */
 export type Ui = {
   background: Hex;
-  /** Raised surfaces: widgets, menus, inputs, hovers. */
+  /** Raised surfaces: menus, inputs, hovers, suggestions. */
   surface: Hex;
+  /** Code blocks in Markdown and chat, and the find widget around its input. */
+  block: Hex;
   hover: Hex;
   /** A selected row. */
   active: Hex;
@@ -141,15 +145,16 @@ export const dark: Palette = {
     regex: "#62C073",
     constant: "#52A8FF",
     function: "#BF7AF0",
-    type: "#BF7AF0",
-    property: "#F2A20D",
+    type: "#52A8FF",
+    property: "#BF7AF0",
+    attribute: "#F2A20D",
     key: "#F6608F",
     styleProperty: "#52A8FF",
     unit: "#FF6166",
     parameter: "#FFFFFF",
     tag: "#62C073",
     selector: "#BF7AF0",
-    pseudo: "#F6608F",
+    pseudo: "#BF7AF0",
     command: "#BF7AF0",
     argument: "#62C073",
     inserted: "#62C073",
@@ -171,6 +176,7 @@ export const dark: Palette = {
   ui: {
     background: "#000000",
     surface: "#0A0A0A",
+    block: "#000000",
     hover: "#111111",
     active: "#1F1F1F",
     border: "#1F1F1F",
@@ -218,15 +224,16 @@ export const light: Palette = {
     regex: "#287A3A",
     constant: "#0068D6",
     function: "#781FBB",
-    type: "#781FBB",
-    property: "#A35200",
+    type: "#0068D6",
+    property: "#781FBB",
+    attribute: "#A35200",
     key: "#BD2864",
     styleProperty: "#0068D6",
     unit: "#CB2A2E",
     parameter: "#000000",
     tag: "#287A3A",
     selector: "#781FBB",
-    pseudo: "#BD2864",
+    pseudo: "#781FBB",
     command: "#781FBB",
     argument: "#287A3A",
     inserted: "#287A3A",
@@ -250,6 +257,7 @@ export const light: Palette = {
   ui: {
     background: "#FFFFFF",
     surface: "#FFFFFF",
+    block: "#FAFAFA",
     hover: "#F5F5F5",
     active: "#EBEBEB",
     border: "#EAEAEA",

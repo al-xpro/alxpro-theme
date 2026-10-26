@@ -20,7 +20,7 @@
     "textPreformat.background": "#111111",
     "textBlockQuote.background": "#0A0A0A",
     "textBlockQuote.border": "#333333",
-    "textCodeBlock.background": "#0A0A0A",
+    "textCodeBlock.background": "#000000",
     "textSeparator.foreground": "#1F1F1F",
     "toolbar.hoverBackground": "#111111",
     "titleBar.activeBackground": "#000000",
@@ -40,8 +40,12 @@
     "activityBar.border": "#1F1F1F",
     "activityBar.activeBorder": "#FFFFFF",
     "activityBar.activeBackground": "#000000",
-    "activityBarBadge.background": "#52A8FF",
+    "activityBarBadge.background": "#FFFFFF",
     "activityBarBadge.foreground": "#000000",
+    "activityErrorBadge.background": "#FF6166",
+    "activityErrorBadge.foreground": "#000000",
+    "activityWarningBadge.background": "#F2A20D",
+    "activityWarningBadge.foreground": "#000000",
     "activityBarTop.foreground": "#FFFFFF",
     "activityBarTop.inactiveForeground": "#8F8F8F",
     "activityBarTop.activeBorder": "#FFFFFF",
@@ -157,11 +161,11 @@
     "extensionButton.prominentBackground": "#EDEDED",
     "extensionButton.prominentForeground": "#000000",
     "extensionButton.prominentHoverBackground": "#FFFFFF",
-    "extensionBadge.remoteBackground": "#52A8FF",
+    "extensionBadge.remoteBackground": "#FFFFFF",
     "extensionBadge.remoteForeground": "#000000",
     "extensionIcon.starForeground": "#F2A20D",
-    "badge.background": "#1F1F1F",
-    "badge.foreground": "#EDEDED",
+    "badge.background": "#FFFFFF",
+    "badge.foreground": "#000000",
     "progressBar.background": "#52A8FF",
     "keybindingLabel.background": "#111111",
     "keybindingLabel.foreground": "#EDEDED",
@@ -171,7 +175,7 @@
     "scrollbarSlider.background": "#FFFFFF1A",
     "scrollbarSlider.hoverBackground": "#FFFFFF26",
     "scrollbarSlider.activeBackground": "#FFFFFF33",
-    "editorWidget.background": "#0A0A0A",
+    "editorWidget.background": "#000000",
     "editorWidget.foreground": "#EDEDED",
     "editorWidget.border": "#1F1F1F",
     "editorWidget.resizeBorder": "#52A8FF",
@@ -434,7 +438,6 @@
         "string",
         "string.quoted",
         "string.template",
-        "markup.inline.raw",
         "punctuation.definition.string"
       ],
       "settings": {
@@ -467,6 +470,8 @@
         "constant.other",
         "support.constant",
         "variable.other.enummember",
+        "variable.other.constant",
+        "variable.other.object",
         "punctuation.definition.constant.css",
         "meta.diff.range",
         "punctuation.definition.range.diff"
@@ -500,6 +505,8 @@
         "storage.type.primitive",
         "entity.name.type.module",
         "support.type.primitive",
+        "support.class.component",
+        "new.expr meta.function-call entity.name.function",
         "storage.type.numeric.go",
         "storage.type.string.go",
         "storage.type.error.go",
@@ -509,7 +516,7 @@
         "storage.type.uintptr.go"
       ],
       "settings": {
-        "foreground": "#BF7AF0"
+        "foreground": "#52A8FF"
       }
     },
     {
@@ -522,7 +529,7 @@
         "support.variable.property"
       ],
       "settings": {
-        "foreground": "#F2A20D"
+        "foreground": "#BF7AF0"
       }
     },
     {
@@ -548,7 +555,6 @@
     {
       "scope": [
         "entity.name.tag",
-        "support.class.component",
         "entity.name.tag.css"
       ],
       "settings": {
@@ -583,7 +589,7 @@
         "entity.other.attribute-name.pseudo-element punctuation.definition.entity"
       ],
       "settings": {
-        "foreground": "#F6608F"
+        "foreground": "#BF7AF0"
       }
     },
     {
@@ -592,8 +598,27 @@
         "support.type.vendored.property-name",
         "meta.property-value.css",
         "variable.css",
+        "variable.prop.css",
+        "variable.prop.css punctuation.definition.variable",
         "variable.argument.css",
         "meta.function.variable.css punctuation.section.function"
+      ],
+      "settings": {
+        "foreground": "#52A8FF"
+      }
+    },
+    {
+      "scope": [
+        "meta.at-rule.theme.body.tailwind variable.css",
+        "meta.at-rule.body.css variable.css"
+      ],
+      "settings": {
+        "foreground": "#FFFFFF"
+      }
+    },
+    {
+      "scope": [
+        "meta.property-list.css variable.css"
       ],
       "settings": {
         "foreground": "#52A8FF"
@@ -662,6 +687,14 @@
       "settings": {
         "foreground": "#FFFFFF",
         "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "markup.inline.raw"
+      ],
+      "settings": {
+        "foreground": "#FFFFFF"
       }
     },
     {
