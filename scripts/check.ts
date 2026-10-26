@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { palettes, type Hex, type Palette } from "../src/palette.ts";
+import { banner } from "../src/banner.ts";
 
 /*
  * Checks the themes say what the palette means them to:
@@ -108,6 +109,12 @@ for (const p of palettes) {
       expect(read.get(key) === hex.toUpperCase(), `${p.name}: Terminal.app ${key} reads back as ${read.get(key)}, not ${hex}`);
     }
   }
+}
+
+/* install.sh runs alone through `curl | bash`, so it carries its own copy of the banner. */
+const installer = readFileSync(join(root, "install.sh"), "utf8");
+for (const line of [...banner.alxpro, ...banner.theme]) {
+  expect(installer.includes(`"${line}"`), `install.sh's banner differs from src/banner.ts at: ${line.trim()}`);
 }
 
 if (failures.length) {
