@@ -19,7 +19,6 @@ means.
   and CSS custom properties, typed, generated from the same palette and released with the
   same version.
 - A Zed extension with both themes, mapped to Zed's tree-sitter highlight names.
-- `PUBLISHING.md`: how each version reaches every marketplace and registry.
 
 ### Changed
 
