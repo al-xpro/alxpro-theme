@@ -4,6 +4,32 @@ All notable changes to this project. Versions follow [semver](https://semver.org
 patch changes a color, a minor adds a format or a language, a major changes what a role
 means.
 
+## 1.1.0 — 2026-10-26
+
+### Added
+
+- A welcome walkthrough in VS Code that opens after installing, with an "ALXPRO THEME"
+  banner and steps for theme, system appearance, font and terminal.
+- `install.sh`: one command installs the theme for the terminal it runs in, then prints the
+  banner. It never edits config files.
+- `npm run scopes`, which shows each token's color and scopes as the installed VS Code
+  colors them.
+- New README and marketplace images, designed in Figma.
+
+### Changed
+
+- Amber is only for props and attributes in markup; properties are purple.
+- Types, interfaces, classes, constructors, components, `const` names and objects (`event`
+  in `event.preventDefault()`) are blue. CSS pseudo-classes are purple.
+- Code blocks in Markdown and chat, and the find widget around its input, are black in the
+  dark theme and `#FAFAFA` in the light one.
+- Badges are white with black numbers in the dark theme, black with white in the light.
+
+### Fixed
+
+- Inline code in Markdown is plain text; only its backticks are colored.
+- CSS variables are white inside Tailwind's `@theme` and blue in `:root` and `var()`.
+
 ## 1.0.0 — 2026-10-25
 
 The first public release.
