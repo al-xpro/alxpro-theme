@@ -220,9 +220,6 @@ To try a change in VS Code, open the repository and press **F5**. That starts an
 Development Host with the themes installed. Open [`samples/`](samples/) there, and run
 [`samples/terminal/show.sh`](samples/terminal/show.sh) in any terminal to see its colors.
 
-How each version reaches the VS Code Marketplace, Open VSX, npm, Zed and the terminal theme
-collections is in [`PUBLISHING.md`](PUBLISHING.md).
-
 Found a wrong color? [Open an issue](https://github.com/al-xpro/alxpro-theme/issues/new/choose).
 Include the scope from **Developer: Inspect Editor Tokens and Scopes**.
 
