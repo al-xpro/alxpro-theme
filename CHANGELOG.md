@@ -15,6 +15,9 @@ means.
 - `npm run scopes`, which shows each token's color and scopes as the installed VS Code
   colors them.
 - New README and marketplace images, designed in Figma.
+- The `alxpro-theme` npm package: Shiki themes, xterm.js terminal colors, the full palette
+  and CSS custom properties, typed, generated from the same palette and released with the
+  same version.
 
 ### Changed
 

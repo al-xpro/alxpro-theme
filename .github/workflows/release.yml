@@ -1,8 +1,9 @@
 name: Release
 
 # Pushing a tag like v1.2.0 builds everything, creates the GitHub release with
-# the .vsix and the terminal themes, and publishes to the marketplaces whose
-# token is set as a repository secret.
+# the .vsix and the terminal themes, and publishes to every registry that's
+# been set up: Open VSX and the VS Code Marketplace when their token is a
+# repository secret, npm when the repository variable NPM_PUBLISH is true.
 
 on:
   push:
@@ -10,6 +11,8 @@ on:
 
 permissions:
   contents: write
+  # npm's trusted publishing proves this workflow's identity with an OIDC token.
+  id-token: write
 
 jobs:
   release:
@@ -27,7 +30,7 @@ jobs:
       - run: npm run typecheck
       - run: |
           npm run build
-          git diff --exit-code -- themes/
+          git diff --exit-code -- themes/ npm/
       - run: npm run check
       - name: Package
         run: |
@@ -59,3 +62,13 @@ jobs:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
         if: env.VSCE_PAT != ''
         run: npx vsce publish --packagePath "dist/alxpro-theme-$GITHUB_REF_NAME.vsix" -p "$VSCE_PAT"
+
+      # npm (alxpro-theme), with trusted publishing: no token; npm checks that
+      # this workflow, in this repository, is the package's trusted publisher.
+      # Set the repository variable NPM_PUBLISH to true once that's configured
+      # on npmjs.com. Trusted publishing needs npm 11.5.1 or later.
+      - name: Publish to npm
+        if: vars.NPM_PUBLISH == 'true'
+        run: |
+          npm install -g npm@^11.5.1
+          npm publish ./npm --provenance --access public

@@ -1,0 +1,49 @@
+{
+  "name": "alxpro-theme",
+  "version": "1.1.0",
+  "description": "AlxPro Dark and AlxPro Light for the web: Shiki and TextMate themes, xterm.js terminal colors and CSS variables, black and white with a few colors that each mean one thing.",
+  "license": "MIT",
+  "author": "Alex Prostamo (https://github.com/al-xpro)",
+  "homepage": "https://github.com/al-xpro/alxpro-theme/tree/main/npm#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/al-xpro/alxpro-theme.git",
+    "directory": "npm"
+  },
+  "bugs": {
+    "url": "https://github.com/al-xpro/alxpro-theme/issues"
+  },
+  "keywords": [
+    "theme",
+    "shiki",
+    "textmate",
+    "syntax-highlighting",
+    "xterm",
+    "terminal",
+    "dark",
+    "light",
+    "rehype-pretty-code",
+    "expressive-code"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./dark.json": "./dist/themes/alxpro-dark.json",
+    "./light.json": "./dist/themes/alxpro-light.json",
+    "./css": "./dist/alxpro.css",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

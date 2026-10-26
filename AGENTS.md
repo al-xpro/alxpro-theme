@@ -5,8 +5,9 @@
 - **Colors live only in `src/palette.ts`.** Which scopes a syntax role colors, and how the
   editor's UI uses the palette, is in `src/formats/vscode.ts`. Terminal formats are in
   `src/formats/terminals.ts`.
-- **Never edit `themes/` by hand.** Run `npm run build` and commit what it writes. CI fails
-  if `themes/` differs from a fresh build.
+- **Never edit `themes/`, `npm/dist/` or `npm/package.json` by hand.** Run `npm run build`
+  and commit what it writes. CI fails if they differ from a fresh build. `npm/README.md` is
+  written by hand.
 - **Before a pull request:** `npm run typecheck`, `npm run build`, `npm run check`. For any
   visible change, attach before/after images: `npm run images`, or screenshots from
   `npm run preview`.
