@@ -8,8 +8,8 @@ VS Code, Cursor and eight terminals.
 ![AlxPro Dark and AlxPro Light, side by side, on a React component](images/hero.png)
 
 - **Pure black and pure white backgrounds**, with white or black text, and a few accents
-  that mean one thing each: pink keywords, green strings, blue values, purple functions and
-  types, amber props and properties.
+  that mean one thing each: pink keywords, green strings, blue values and types, purple
+  functions and properties, and amber kept for props in markup.
 - **Made for the web stack**: TSX, TypeScript, CSS and Tailwind, HTML, JSON, YAML,
   Markdown, MDX, shell, Vue and Svelte, tested on real files in [`samples/`](samples/).
 - **Shell commands read at a glance**: the program is purple, everything it's given is
@@ -115,6 +115,11 @@ The themes are drawn with [Geist Mono](https://vercel.com/font) in mind
 "terminal.integrated.fontFamily": "'Geist Mono'"
 ```
 
+If you write Tailwind CSS v4, don't use the **PostCSS Language Support** extension. It
+replaces VS Code's CSS grammar with one that reads the variables in `@theme` as HTML tags,
+so they're colored like tags in every theme. VS Code's own grammar, with the Tailwind CSS
+IntelliSense extension, colors `@theme` and `:root` correctly.
+
 Semantic highlighting is off on purpose, so VS Code colors code exactly as
 [Shiki](https://shiki.style) does on the web. Bracket pair colorization is themed to match
 the punctuation, so brackets stay plain unless one is unmatched.
@@ -126,11 +131,11 @@ the punctuation, so brackets stay plain unless one is unmatched.
 | Background | `#000000` | `#FFFFFF` |
 | Text, punctuation, parameters | `#FFFFFF` | `#000000` |
 | Comments | `#A0A0A0` | `#666666` |
-| Keywords, operators, JSON keys, `${…}`, CSS pseudo-classes | `#F6608F` | `#BD2864` |
-| Strings, tags and components, shell arguments | `#62C073` | `#287A3A` |
-| Numbers, constants, CSS properties, links | `#52A8FF` | `#0068D6` |
-| Functions, types, CSS classes, shell commands | `#BF7AF0` | `#781FBB` |
-| Props and properties | `#F2A20D` | `#A35200` |
+| Keywords, operators, JSON keys, `${…}` | `#F6608F` | `#BD2864` |
+| Strings, HTML tags, shell arguments | `#62C073` | `#287A3A` |
+| Numbers, `const` names, objects (`event` in `event.preventDefault()`), types, interfaces, classes, components, CSS properties and `:root` variables, links | `#52A8FF` | `#0068D6` |
+| Functions, methods, properties, CSS classes and pseudo-classes, shell commands | `#BF7AF0` | `#781FBB` |
+| Props and attributes in markup (`className=`, `href=`) | `#F2A20D` | `#A35200` |
 | CSS units, deletions | `#FF6166` | `#CB2A2E` |
 
 Every value lives in [`src/palette.ts`](src/palette.ts).
@@ -173,6 +178,7 @@ npm install
 npm run build     # regenerate themes/ after editing src/
 npm run check     # contrast and file checks
 npm run preview   # http://localhost:4321/preview/: hover a token to see its scopes
+npm run scopes -- samples/globals.css   # every token's color and scopes, as your VS Code colors them
 npm run images    # re-render the screenshots in images/
 npm run package   # build the .vsix into dist/
 ```
