@@ -14,8 +14,8 @@ import { banner } from "../src/banner.ts";
  *   badge's text becomes when it's printed in inverse video;
  * - the generated files parse, and on macOS every Terminal.app color
  *   unarchives with AppKit to exactly the palette's value;
- * - the npm package loads in Shiki and colors code with the palette, at the
- *   extension's version.
+ * - the npm package loads in Shiki and colors code with the palette, and the
+ *   npm package and the Zed extension carry the extension's version.
  *
  * Exits non-zero on the first theme that fails anything, after listing it all.
  */
@@ -127,6 +127,14 @@ for (const p of palettes) {
 }
 const versions = ["package.json", "npm/package.json"].map((f) => JSON.parse(readFileSync(join(root, f), "utf8")).version);
 expect(versions[0] === versions[1], `npm/package.json is ${versions[1]}, the extension ${versions[0]}: run npm run build`);
+
+/* The Zed theme: both themes, every color a hex Zed reads, the extension's version. */
+const zed = JSON.parse(readFileSync(join(root, "zed/themes/alxpro.json"), "utf8"));
+expect(zed.themes.map((t: { name: string }) => t.name).join() === palettes.map((p) => p.name).join(), "zed: the themes aren't AlxPro Dark and AlxPro Light");
+const colors = JSON.stringify(zed.themes).match(/"#[^"]*"/g) ?? [];
+for (const c of colors) expect(/^"#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?"$/.test(c), `zed: ${c} isn't #RRGGBB or #RRGGBBAA`);
+const zedVersion = readFileSync(join(root, "zed/extension.toml"), "utf8").match(/^version = "(.+)"$/m)?.[1];
+expect(zedVersion === versions[0], `zed/extension.toml is ${zedVersion}, the extension ${versions[0]}: run npm run build`);
 
 /* install.sh runs alone through `curl | bash`, so it carries its own copy of the banner. */
 const installer = readFileSync(join(root, "install.sh"), "utf8");
