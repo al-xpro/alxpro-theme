@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { palettes, type Hex, type Palette } from "../src/palette.ts";
 import { banner } from "../src/banner.ts";
 
@@ -13,7 +13,9 @@ import { banner } from "../src/banner.ts";
  *   PASS — is readable in the background's own color, which is what such a
  *   badge's text becomes when it's printed in inverse video;
  * - the generated files parse, and on macOS every Terminal.app color
- *   unarchives with AppKit to exactly the palette's value.
+ *   unarchives with AppKit to exactly the palette's value;
+ * - the npm package loads in Shiki and colors code with the palette, at the
+ *   extension's version.
  *
  * Exits non-zero on the first theme that fails anything, after listing it all.
  */
@@ -110,6 +112,20 @@ for (const p of palettes) {
     }
   }
 }
+
+/* The npm package, as a site would use it: Shiki loads both themes and colors a line with them. */
+const npm = await import(pathToFileURL(join(root, "npm/dist/index.js")).href);
+const { createHighlighter } = await import("shiki");
+const highlighter = await createHighlighter({ themes: [npm.alxproDark, npm.alxproLight], langs: ["tsx"] });
+for (const p of palettes) {
+  const [line] = highlighter.codeToTokens('const name = "x";', { lang: "tsx", theme: p.slug }).tokens;
+  const color = (text: string) => line.find((t) => t.content.includes(text))?.color?.toUpperCase();
+  expect(color("const") === p.syntax.keyword, `npm: Shiki colors \`const\` ${color("const")} in ${p.slug}`);
+  expect(color("x") === p.syntax.string, `npm: Shiki colors a string ${color("x")} in ${p.slug}`);
+  expect(npm.terminal[p.type].red === p.terminal.ansi[1], `npm: terminal.${p.type}.red isn't the palette's`);
+}
+const versions = ["package.json", "npm/package.json"].map((f) => JSON.parse(readFileSync(join(root, f), "utf8")).version);
+expect(versions[0] === versions[1], `npm/package.json is ${versions[1]}, the extension ${versions[0]}: run npm run build`);
 
 /* install.sh runs alone through `curl | bash`, so it carries its own copy of the banner. */
 const installer = readFileSync(join(root, "install.sh"), "utf8");

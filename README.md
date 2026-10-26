@@ -157,14 +157,18 @@ Every value lives in [`src/palette.ts`](src/palette.ts).
 
 ## On the web
 
-The VS Code themes are also [Shiki](https://shiki.style) themes, so your blog or docs can
-match your editor. That covers Shiki, rehype-pretty-code, Expressive Code (Astro and
-Starlight), Fumadocs and Nextra:
+Your site, blog and docs can match your editor with the
+[`alxpro-theme`](npm/README.md) npm package: Shiki themes (for Shiki, rehype-pretty-code,
+Expressive Code, Fumadocs and Nextra), terminal colors for xterm.js, and every color as a CSS
+custom property.
+
+```bash
+npm install alxpro-theme
+```
 
 ```ts
 import { createHighlighter } from "shiki";
-import alxproDark from "./alxpro-dark.json" with { type: "json" };
-import alxproLight from "./alxpro-light.json" with { type: "json" };
+import { alxproDark, alxproLight } from "alxpro-theme";
 
 const highlighter = await createHighlighter({
   themes: [alxproDark, alxproLight],
@@ -172,7 +176,7 @@ const highlighter = await createHighlighter({
 });
 const html = highlighter.codeToHtml(code, {
   lang: "tsx",
-  themes: { dark: "AlxPro Dark", light: "AlxPro Light" },
+  themes: { light: "alxpro-light", dark: "alxpro-dark" },
 });
 ```
 
@@ -182,9 +186,10 @@ const html = highlighter.codeToHtml(code, {
 src/palette.ts            every color, for both themes: syntax, terminal, editor UI
 src/formats/vscode.ts     which scopes each syntax role colors, and the editor's UI colors
 src/formats/terminals.ts  the 16 terminal colors in each terminal's format
+src/formats/npm.ts        the npm package: Shiki themes, terminal colors, CSS variables, types
 scripts/build.ts          writes themes/ from the above
 scripts/check.ts          contrast, badges, and (on macOS) Terminal.app read-back
-themes/                   generated, committed, never edited by hand
+themes/, npm/dist/        generated, committed, never edited by hand
 samples/, preview/        test files and a page that renders them with the real themes
 ```
 
