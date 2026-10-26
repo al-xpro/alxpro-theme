@@ -47,10 +47,10 @@ export function vscodeTheme(p: Palette) {
       "sash.hoverBorder": u.accent,
       "textLink.foreground": u.accent,
       "textLink.activeForeground": u.accent,
-      /* Inline code in chat, hovers and the Markdown preview: the text color on the
-         field color, in a gray border where the view draws one. */
+      /* Inline code in chat, hovers and the Markdown preview: the text color on its
+         own gray, in a gray border where the view draws one. */
       "textPreformat.foreground": u.strong,
-      "textPreformat.background": u.field,
+      "textPreformat.background": u.code,
       "textPreformat.border": u.borderStrong,
       /* Quotes and callouts in the Markdown preview, like your messages in a chat. */
       "textBlockQuote.background": u.field,
