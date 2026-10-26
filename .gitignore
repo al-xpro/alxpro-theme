@@ -5,3 +5,6 @@ node_modules/
 dist/
 *.vsix
 .DS_Store
+
+# Alex's logo, used to design images in Figma; not part of the repo.
+images/logo-*.png

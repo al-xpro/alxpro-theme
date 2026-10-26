@@ -17,6 +17,9 @@
 - **Amber is for props and attributes in markup only.** Don't spread it to other roles.
 - **Releases:** bump `version` in `package.json`, add a `CHANGELOG.md` entry, merge, and
   tag `vX.Y.Z`. The release workflow does the rest.
+- **The images in `images/` are designed in Figma** (the "AlxPro Theme · Images" file) and
+  exported from there; no script writes to `images/`. If colors change, ask Alex to update
+  and re-export them. `npm run images` makes quick renders for pull requests instead.
 - **The banner lives in `src/banner.ts`.** `install.sh` keeps its own copy because it runs
   alone through `curl | bash`; change both, and `npm run check` confirms they match.
 

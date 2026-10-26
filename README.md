@@ -21,10 +21,7 @@ VS Code, Cursor and eight terminals.
 - **The whole editor is themed**: tabs, sidebar, menus, widgets, diff, git and the status
   bar, so nothing falls back to VS Code's blue and purple.
 
-| | |
-| --- | --- |
-| ![CSS](images/css.png) | ![Shell commands](images/shell.png) |
-| ![Markdown](images/markdown.png) | ![Terminal](images/terminal.png) |
+![CSS with Tailwind, Markdown, JSON and shell commands, in AlxPro Dark and AlxPro Light](images/languages.png)
 
 ## Install
 
@@ -39,6 +36,8 @@ code --install-extension alxpro.alxpro-theme
 A short walkthrough opens after installing: pick dark or light, follow your system, set the
 font, and match your terminal. Reopen it any time with **Welcome: Open Walkthrough…** →
 **AlxPro Theme**.
+
+![The ALXPRO THEME banner, shown by the VS Code walkthrough and by install.sh](images/welcome.png)
 
 Or run **Preferences: Color Theme** and pick **AlxPro Dark** or **AlxPro Light**. To follow
 the system's appearance:
@@ -114,7 +113,7 @@ set -U fish_color_option green
 set -U fish_color_quote green
 ```
 
-![Commands in the terminal, dark and light](images/terminal-commands.png)
+![Commands, the 16 colors and a test run, in AlxPro Dark and AlxPro Light terminals](images/terminal.png)
 
 ## Recommended settings
 
@@ -151,6 +150,8 @@ the punctuation, so brackets stay plain unless one is unmatched.
 | Functions, methods, properties, CSS classes and pseudo-classes, shell commands | `#BF7AF0` | `#781FBB` |
 | Props and attributes in markup (`className=`, `href=`) | `#F2A20D` | `#A35200` |
 | CSS units, deletions | `#FF6166` | `#CB2A2E` |
+
+![Every color role, with its hex in AlxPro Dark and AlxPro Light](images/palette.png)
 
 Every value lives in [`src/palette.ts`](src/palette.ts).
 
@@ -193,7 +194,7 @@ npm run build     # regenerate themes/ after editing src/
 npm run check     # contrast and file checks
 npm run preview   # http://localhost:4321/preview/: hover a token to see its scopes
 npm run scopes -- samples/globals.css   # every token's color and scopes, as your VS Code colors them
-npm run images    # re-render the screenshots in images/
+npm run images    # quick before/after renders of the samples, into dist/renders/
 npm run package   # build the .vsix into dist/
 ```
 
