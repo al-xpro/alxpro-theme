@@ -36,7 +36,11 @@ Search for **AlxPro Theme** in the Extensions view, or:
 code --install-extension alxpro.alxpro-theme
 ```
 
-Then run **Preferences: Color Theme** and pick **AlxPro Dark** or **AlxPro Light**. To follow
+A short walkthrough opens after installing: pick dark or light, follow your system, set the
+font, and match your terminal. Reopen it any time with **Welcome: Open Walkthrough…** →
+**AlxPro Theme**.
+
+Or run **Preferences: Color Theme** and pick **AlxPro Dark** or **AlxPro Light**. To follow
 the system's appearance:
 
 ```jsonc
@@ -57,6 +61,16 @@ Every release also attaches the `.vsix` on the
 
 ### Terminals
 
+Run this in the terminal you want to theme. It works out which terminal it is, installs
+both themes there, and tells you the one line to add to turn them on. It never edits your
+config files.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/al-xpro/alxpro-theme/main/install.sh | bash
+```
+
+To name the terminal yourself, add it after `bash -s --`: `terminal-app`, `iterm2`,
+`ghostty`, `warp`, `wezterm`, `kitty`, `alacritty` or `vscode`. Prefer to do it by hand?
 Every theme is in [`themes/`](themes/), and also zipped on the
 [Releases page](https://github.com/al-xpro/alxpro-theme/releases).
 
