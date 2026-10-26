@@ -89,8 +89,6 @@ export type Ui = {
   block: Hex;
   /** Inputs, and what VS Code draws with them, such as your own messages in a chat. */
   field: Hex;
-  /** The border of an input field that has focus; every other control focuses in the accent. */
-  fieldFocus: Hex;
   /** The title bar, and the header of modal editors such as Settings and Profiles. */
   header: Hex;
   hover: Hex;
@@ -182,9 +180,8 @@ export const dark: Palette = {
   ui: {
     background: "#000000",
     surface: "#0A0A0A",
-    block: "#000000",
+    block: "#0A0A0A",
     field: "#0A0A0A",
-    fieldFocus: "#515151",
     header: "#000000",
     hover: "#111111",
     active: "#1F1F1F",
@@ -268,7 +265,6 @@ export const light: Palette = {
     surface: "#FFFFFF",
     block: "#FAFAFA",
     field: "#FAFAFA",
-    fieldFocus: "#CFCFCF",
     header: "#FAFAFA",
     hover: "#F5F5F5",
     active: "#EBEBEB",
