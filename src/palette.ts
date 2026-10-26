@@ -182,7 +182,7 @@ export const dark: Palette = {
   ui: {
     background: "#000000",
     surface: "#0A0A0A",
-    block: "#000000",
+    block: "#0A0A0A",
     field: "#0A0A0A",
     fieldFocus: "#515151",
     header: "#000000",
