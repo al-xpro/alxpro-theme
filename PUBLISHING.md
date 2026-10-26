@@ -7,7 +7,7 @@ How AlxPro Theme reaches each place it's published. Everything is generated from
 | Where | What | Who it reaches | After the first time |
 | --- | --- | --- | --- |
 | [GitHub Releases](#1-github-release) | `.vsix`, terminal themes | everyone | automatic on a tag |
-| [VS Code Marketplace](#2-vs-code-marketplace) | the extension | VS Code | upload the `.vsix` (see the note on 1 December 2026) |
+| [VS Code Marketplace](#2-vs-code-marketplace) | the extension | VS Code | upload the `.vsix` by hand |
 | [Open VSX](#3-open-vsx) | the extension | Cursor, Windsurf, VSCodium, Gitpod | automatic with `OVSX_PAT` |
 | [npm](#4-npm) | `alxpro-theme` | sites, blogs, docs, xterm.js | automatic with `NPM_PUBLISH` |
 | [Zed](#5-zed) | `zed/` | Zed | a pull request per version |
@@ -44,7 +44,16 @@ the changelog section as notes, then publishes to every registry set up below.
 2. **Create publisher**: ID `alxpro` (permanent; it must match `publisher` in
    `package.json`), name `AlxPro`. Add the logo and links if you like.
 
-**Every release, until 30 November 2026 (with a token):**
+**Every release (upload by hand, no Azure DevOps needed):**
+
+1. <https://marketplace.visualstudio.com/manage> → publisher `alxpro`.
+2. First time: **New extension** → **Visual Studio Code** → upload the `.vsix` from the GitHub
+   release. Afterwards: the extension's **⋯** menu → **Update** → upload the new `.vsix`.
+
+**Optional, until 30 November 2026: publish from the command line with a token.** On
+1 December 2026 Azure DevOps retires global personal access tokens, and Microsoft documents
+token-free publishing (Microsoft Entra ID, `vsce publish --azure-credential`) only for Azure
+Pipelines, so after that date uploading by hand is the way.
 
 1. Open <https://dev.azure.com>, sign in with the same Microsoft account, and create an
    organization if you don't have one (any name).
@@ -60,16 +69,8 @@ the changelog section as notes, then publishes to every registry set up below.
    npx vsce publish --packagePath dist/alxpro-theme-1.1.0.vsix
    ```
 
-   To automate it until 1 December, save the token as the repository secret `VSCE_PAT`.
-
-**From 1 December 2026**, Azure DevOps retires global personal access tokens, and Microsoft
-documents token-free publishing (Microsoft Entra ID, `vsce publish --azure-credential`) only
-for Azure Pipelines. For a personal account, upload by hand:
-
-1. <https://marketplace.visualstudio.com/manage> → publisher `alxpro`.
-2. First time: **New extension** → **Visual Studio Code** → upload the `.vsix` from the GitHub
-   release. Afterwards: the extension's **⋯** menu → **Update** → upload the new `.vsix`.
-3. Remove the `VSCE_PAT` secret; the workflow skips the step without it.
+   Saved as the repository secret `VSCE_PAT`, the token lets every tag publish until
+   1 December. Then remove the secret; the workflow skips the step without it.
 
 The listing appears within minutes at
 `https://marketplace.visualstudio.com/items?itemName=alxpro.alxpro-theme`. Set it as the
