@@ -21,9 +21,16 @@ means.
 - Amber is only for props and attributes in markup; properties are purple.
 - Types, interfaces, classes, constructors, components, `const` names and objects (`event`
   in `event.preventDefault()`) are blue. CSS pseudo-classes are purple.
-- Code blocks in Markdown and chat, and the find widget around its input, are black in the
-  dark theme and `#FAFAFA` in the light one.
+- Code blocks in Markdown and chat, and the find widget around its input, are `#0A0A0A` in
+  the dark theme and `#FAFAFA` in the light one.
+- Inline code, your chat messages, Markdown callouts and inputs use the same field color:
+  `#0A0A0A` in dark, `#FAFAFA` in light. Inline code is white (black) text in a gray border.
+- The command palette, suggestions, hovers, menus, notifications and peek views are black
+  (white); modal editor headers and the title bar are `#FAFAFA` in light.
 - Badges are white with black numbers in the dark theme, black with white in the light.
+- The debugging status bar inverts instead of turning amber. A picked row in the sidebar
+  has no outline; buttons are pure white (black) and fade on hover.
+- The Agents window uses the theme.
 
 ### Fixed
 
