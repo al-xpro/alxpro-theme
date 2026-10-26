@@ -48,9 +48,9 @@ export function vscodeTheme(p: Palette) {
       "textLink.foreground": u.accent,
       "textLink.activeForeground": u.accent,
       /* Inline code in chat, hovers and the Markdown preview: the text color on the
-         background, in a gray border where the view draws one. */
+         field color, in a gray border where the view draws one. */
       "textPreformat.foreground": u.strong,
-      "textPreformat.background": u.background,
+      "textPreformat.background": u.field,
       "textPreformat.border": u.borderStrong,
       /* Quotes and callouts in the Markdown preview, like your messages in a chat. */
       "textBlockQuote.background": u.field,
@@ -283,8 +283,7 @@ export function vscodeTheme(p: Palette) {
       "peekViewTitle.background": u.background,
       "peekViewTitleLabel.foreground": u.text,
       "peekViewTitleDescription.foreground": u.muted,
-      /* Chats: your messages, and the field you type them in, which focuses in
-         gray like every input rather than in the accent. */
+      /* Chats: your messages, and the field you type them in. */
       "chat.requestBackground": u.field,
       "chat.requestBubbleBackground": u.field,
       "chat.requestBubbleHoverBackground": u.hover,
@@ -293,7 +292,7 @@ export function vscodeTheme(p: Palette) {
       "inlineChat.border": u.border,
       "inlineChatInput.background": u.field,
       "inlineChatInput.border": u.borderStrong,
-      "inlineChatInput.focusBorder": u.fieldFocus,
+      "inlineChatInput.focusBorder": u.accent,
       "editorActionList.background": u.background,
 
       /* The Agents window ("Open in Agents"): the same surfaces as the rest of VS Code. */
@@ -308,7 +307,7 @@ export function vscodeTheme(p: Palette) {
       "agentsChatInput.background": u.field,
       "agentsChatInput.foreground": u.text,
       "agentsChatInput.border": u.borderStrong,
-      "agentsChatInput.focusBorder": u.fieldFocus,
+      "agentsChatInput.focusBorder": u.accent,
       "agentsChatInput.placeholderForeground": u.subtle,
       "agentsNewSessionButton.background": u.button,
       "agentsNewSessionButton.foreground": u.onButton,
