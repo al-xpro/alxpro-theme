@@ -19,6 +19,7 @@ means.
   and CSS custom properties, typed, generated from the same palette and released with the
   same version.
 - A Zed extension with both themes, mapped to Zed's tree-sitter highlight names.
+- A contributing guide, a code of conduct and a security policy.
 
 ### Changed
 
@@ -27,8 +28,9 @@ means.
   in `event.preventDefault()`) are blue. CSS pseudo-classes are purple.
 - Code blocks in Markdown and chat, and the find widget around its input, are `#0A0A0A` in
   the dark theme and `#FAFAFA` in the light one.
-- Inline code, your chat messages, Markdown callouts and inputs use the same field color:
-  `#0A0A0A` in dark, `#FAFAFA` in light. Inline code is white (black) text in a gray border.
+- Your chat messages, Markdown callouts and inputs use the field color: `#0A0A0A` in dark,
+  `#FAFAFA` in light.
+- Inline code is white (black) text on `#2A2A2A` (`#E8E8E8`), in a gray border.
 - The command palette, suggestions, hovers, menus, notifications and peek views are black
   (white); modal editor headers and the title bar are `#FAFAFA` in light.
 - Badges are white with black numbers in the dark theme, black with white in the light.
