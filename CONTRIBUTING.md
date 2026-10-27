@@ -36,7 +36,7 @@ Development Host. [`samples/`](samples/) has a sample for each language the them
 - **Colors live only in [`src/palette.ts`](src/palette.ts).** A wrong color in one language
   is almost always a scope problem: find the scope with `npm run scopes -- <file>`, then
   change the scope lists in [`src/formats/vscode.ts`](src/formats/vscode.ts), not the colors.
-- **Never edit the generated files** (`themes/`, `npm/package.json`, `zed/`) by hand. Run
+- **Never edit the generated files** (`themes/`, `npm/package.json`) by hand. Run
   `npm run build` and commit what it writes; CI fails if they differ from a fresh build.
 - **Amber is only for props and attributes in markup.**
 - Every text color keeps WCAG AA contrast; `npm run check` fails otherwise.

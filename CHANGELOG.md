@@ -4,6 +4,14 @@ All notable changes to this project. Versions follow [semver](https://semver.org
 patch changes a color, a minor adds a format or a language, a major changes what a role
 means.
 
+## Unreleased
+
+### Removed
+
+- The Zed theme. Zed can't tell apart several things VS Code colors differently (`const`
+  names, enums, CSS property names), so it couldn't look the same there. It was never
+  published to Zed's registry.
+
 ## 1.1.1 — 2026-10-27
 
 ### Changed
