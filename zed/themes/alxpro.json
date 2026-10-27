@@ -191,10 +191,16 @@
           "function": {
             "color": "#BF7AF0"
           },
+          "function.builtin": {
+            "color": "#BF7AF0"
+          },
           "hint": {
             "color": "#8F8F8F"
           },
           "keyword": {
+            "color": "#F6608F"
+          },
+          "keyword.modifier": {
             "color": "#F6608F"
           },
           "label": {
@@ -226,6 +232,9 @@
           "property": {
             "color": "#BF7AF0"
           },
+          "property.json_key": {
+            "color": "#F6608F"
+          },
           "punctuation": {
             "color": "#FFFFFF"
           },
@@ -235,11 +244,17 @@
           "punctuation.delimiter": {
             "color": "#FFFFFF"
           },
+          "punctuation.delimiter.jsx": {
+            "color": "#F6608F"
+          },
           "punctuation.list_marker": {
             "color": "#FFFFFF"
           },
           "punctuation.special": {
             "color": "#F6608F"
+          },
+          "selector": {
+            "color": "#BF7AF0"
           },
           "string": {
             "color": "#62C073"
@@ -251,13 +266,16 @@
             "color": "#62C073"
           },
           "string.special": {
-            "color": "#62C073"
+            "color": "#52A8FF"
           },
           "string.special.symbol": {
             "color": "#52A8FF"
           },
           "tag": {
             "color": "#62C073"
+          },
+          "tag.component": {
+            "color": "#52A8FF"
           },
           "text.literal": {
             "color": "#FFFFFF"
@@ -269,8 +287,17 @@
           "type": {
             "color": "#52A8FF"
           },
+          "type.definition": {
+            "color": "#52A8FF"
+          },
+          "type.unit": {
+            "color": "#F6608F"
+          },
           "variable": {
             "color": "#FFFFFF"
+          },
+          "variable.builtin": {
+            "color": "#52A8FF"
           },
           "variable.special": {
             "color": "#F6608F"
@@ -469,10 +496,16 @@
           "function": {
             "color": "#781FBB"
           },
+          "function.builtin": {
+            "color": "#781FBB"
+          },
           "hint": {
             "color": "#8F8F8F"
           },
           "keyword": {
+            "color": "#BD2864"
+          },
+          "keyword.modifier": {
             "color": "#BD2864"
           },
           "label": {
@@ -504,6 +537,9 @@
           "property": {
             "color": "#781FBB"
           },
+          "property.json_key": {
+            "color": "#BD2864"
+          },
           "punctuation": {
             "color": "#000000"
           },
@@ -513,11 +549,17 @@
           "punctuation.delimiter": {
             "color": "#000000"
           },
+          "punctuation.delimiter.jsx": {
+            "color": "#BD2864"
+          },
           "punctuation.list_marker": {
             "color": "#000000"
           },
           "punctuation.special": {
             "color": "#BD2864"
+          },
+          "selector": {
+            "color": "#781FBB"
           },
           "string": {
             "color": "#287A3A"
@@ -529,13 +571,16 @@
             "color": "#287A3A"
           },
           "string.special": {
-            "color": "#287A3A"
+            "color": "#0068D6"
           },
           "string.special.symbol": {
             "color": "#0068D6"
           },
           "tag": {
             "color": "#287A3A"
+          },
+          "tag.component": {
+            "color": "#0068D6"
           },
           "text.literal": {
             "color": "#000000"
@@ -547,8 +592,17 @@
           "type": {
             "color": "#0068D6"
           },
+          "type.definition": {
+            "color": "#0068D6"
+          },
+          "type.unit": {
+            "color": "#BD2864"
+          },
           "variable": {
             "color": "#000000"
+          },
+          "variable.builtin": {
+            "color": "#0068D6"
           },
           "variable.special": {
             "color": "#BD2864"

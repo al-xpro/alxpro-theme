@@ -70,6 +70,17 @@ follow the system appearance:
 }
 ```
 
+Zed colors code with tree-sitter, which names fewer things than VS Code's grammars, so a few
+tokens can't take the color they have in VS Code. They stay white or purple in Zed:
+
+- `const` names, and an object before a dot (`Intl` in `Intl.NumberFormat`, `e` in
+  `e.target`): Zed calls every one of them a variable.
+- enum names and members, and names pulled out with `{ id }`.
+- CSS property names, which Zed names like JavaScript properties; custom properties
+  (`--background`); the `.`, `:` and `#` of a selector.
+- the characters inside a regex class (`[a-z0-9]`), Markdown's `**`, `[` and `]`, and keys in
+  YAML front matter.
+
 ### Terminals
 
 Run this in the terminal you want to theme. It works out which terminal it is, installs

@@ -127,7 +127,11 @@ function style(p: Palette) {
 
     players: [{ cursor: u.strong, background: u.strong, selection: u.selection }],
 
-    /* Tree-sitter's highlight names, each given the role it plays here. */
+    /*
+     * Tree-sitter's highlight names, each given the role it plays here. Zed
+     * colors a capture by its longest matching key, so `tag.component.jsx`
+     * takes `tag.component`, and `selector.class` takes `selector`.
+     */
     syntax: {
       attribute: syntaxColor(s.attribute),
       boolean: syntaxColor(s.constant),
@@ -140,8 +144,10 @@ function style(p: Palette) {
       "emphasis.strong": syntaxColor(s.foreground, { font_weight: 700 }),
       enum: syntaxColor(s.type),
       function: syntaxColor(s.function),
+      "function.builtin": syntaxColor(s.function),
       hint: syntaxColor(u.subtle),
       keyword: syntaxColor(s.keyword),
+      "keyword.modifier": syntaxColor(s.keyword),
       label: syntaxColor(s.foreground),
       link_text: syntaxColor(s.link),
       link_uri: syntaxColor(s.link, { font_style: "italic" }),
@@ -151,22 +157,31 @@ function style(p: Palette) {
       preproc: syntaxColor(s.keyword),
       primary: syntaxColor(s.foreground),
       property: syntaxColor(s.property),
+      "property.json_key": syntaxColor(s.key),
       punctuation: syntaxColor(s.punctuation),
       "punctuation.bracket": syntaxColor(s.punctuation),
       "punctuation.delimiter": syntaxColor(s.punctuation),
+      "punctuation.delimiter.jsx": syntaxColor(s.operator),
       "punctuation.list_marker": syntaxColor(s.punctuation),
       "punctuation.special": syntaxColor(s.escape),
+      selector: syntaxColor(s.selector),
       string: syntaxColor(s.string),
       "string.escape": syntaxColor(s.escape),
       "string.regex": syntaxColor(s.regex),
-      "string.special": syntaxColor(s.string),
+      // CSS colors and HTML entities in JSX.
+      "string.special": syntaxColor(s.constant),
       "string.special.symbol": syntaxColor(s.constant),
       tag: syntaxColor(s.tag),
+      "tag.component": syntaxColor(s.type),
       // Inline code in Markdown reads as text, as in VS Code.
       "text.literal": syntaxColor(s.foreground),
       title: syntaxColor(s.heading, { font_weight: 700 }),
       type: syntaxColor(s.type),
+      "type.definition": syntaxColor(s.type),
+      "type.unit": syntaxColor(s.unit),
       variable: syntaxColor(s.foreground),
+      // console, window: only with semantic tokens on, which tell built-ins apart.
+      "variable.builtin": syntaxColor(s.constant),
       "variable.special": syntaxColor(s.keyword),
       variant: syntaxColor(s.constant),
     },
