@@ -4,6 +4,18 @@ All notable changes to this project. Versions follow [semver](https://semver.org
 patch changes a color, a minor adds a format or a language, a major changes what a role
 means.
 
+## 1.1.1 — 2026-10-27
+
+### Changed
+
+- CSS units (`px`, `rem`, `fr`, `%`) are pink, the keyword color, instead of red.
+
+### Fixed
+
+- Zed: JSX components are blue and the `=` of JSX attributes pink; JSON keys are pink; CSS
+  selectors are purple, units pink and colors blue, as in VS Code. The README lists what Zed
+  can't match.
+
 ## 1.1.0 — 2026-10-26
 
 ### Added
