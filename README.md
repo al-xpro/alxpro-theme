@@ -222,6 +222,7 @@ Development Host with the themes installed. Open [`samples/`](samples/) there, a
 
 Found a wrong color? [Open an issue](https://github.com/al-xpro/alxpro-theme/issues/new/choose).
 Include the scope from **Developer: Inspect Editor Tokens and Scopes**.
+To contribute a fix, see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## How this was built
 
