@@ -58,29 +58,6 @@ Every release also attaches the `.vsix` on the
 [Releases page](https://github.com/al-xpro/alxpro-theme/releases). Install it with
 **Extensions: Install from VSIX…**.
 
-### Zed
-
-Open the Extensions page (`cmd-shift-x`), search for **AlxPro Theme** and install it. Then
-pick **AlxPro Dark** or **AlxPro Light** with **theme selector: toggle** (`cmd-k cmd-t`), or
-follow the system appearance:
-
-```json
-{
-  "theme": { "mode": "system", "light": "AlxPro Light", "dark": "AlxPro Dark" }
-}
-```
-
-Zed colors code with tree-sitter, which names fewer things than VS Code's grammars, so a few
-tokens can't take the color they have in VS Code. They stay white or purple in Zed:
-
-- `const` names, and an object before a dot (`Intl` in `Intl.NumberFormat`, `e` in
-  `e.target`): Zed calls every one of them a variable.
-- enum names and members, and names pulled out with `{ id }`.
-- CSS property names, which Zed names like JavaScript properties; custom properties
-  (`--background`); the `.`, `:` and `#` of a selector.
-- the characters inside a regex class (`[a-z0-9]`), Markdown's `**`, `[` and `]`, and keys in
-  YAML front matter.
-
 ### Terminals
 
 Run this in the terminal you want to theme. It works out which terminal it is, installs
@@ -218,10 +195,9 @@ src/palette.ts            every color, for both themes: syntax, terminal, editor
 src/formats/vscode.ts     which scopes each syntax role colors, and the editor's UI colors
 src/formats/terminals.ts  the 16 terminal colors in each terminal's format
 src/formats/npm.ts        the npm package: Shiki themes, terminal colors, CSS variables, types
-src/formats/zed.ts        the Zed theme: tree-sitter highlight names and Zed's UI colors
-scripts/build.ts          writes themes/, npm/ and zed/ from the above
+scripts/build.ts          writes themes/ and npm/ from the above
 scripts/check.ts          contrast, badges, and (on macOS) Terminal.app read-back
-themes/, npm/dist/, zed/  generated, committed, never edited by hand
+themes/, npm/dist/        generated, committed, never edited by hand
 samples/, preview/        test files and a page that renders them with the real themes
 ```
 

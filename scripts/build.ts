@@ -6,11 +6,9 @@ import { vscodeTheme } from "../src/formats/vscode.ts";
 import { terminalFormats } from "../src/formats/terminals.ts";
 import { bannerSvg } from "../src/banner.ts";
 import { css, indexDts, indexJs, packageJson, shikiTheme } from "../src/formats/npm.ts";
-import { zedExtension, zedTheme } from "../src/formats/zed.ts";
 
 /*
- * Writes every theme in `themes/`, the npm package in `npm/` and the Zed
- * extension in `zed/`, from
+ * Writes every theme in `themes/` and the npm package in `npm/`, from
  * `src/palette.ts`. Generated folders are wiped first, so a format that's
  * removed from the source disappears here too, and the output is
  * byte-for-byte the same on every run: CI builds and then fails on any
@@ -53,12 +51,5 @@ for (const palette of palettes) {
   write("dist/themes", `${palette.slug}.json`, `${JSON.stringify(shikiTheme(palette), null, 2)}\n`, pkg);
 }
 copyFileSync(join(root, "LICENSE"), join(pkg, "LICENSE"));
-
-/* The Zed extension: a folder of its own, which Zed's registry points to. */
-const zed = join(root, "zed");
-rmSync(zed, { recursive: true, force: true });
-write("", "extension.toml", zedExtension(version), zed);
-write("themes", "alxpro.json", zedTheme(palettes), zed);
-copyFileSync(join(root, "LICENSE"), join(zed, "LICENSE"));
 
 console.log(`Wrote ${written.length} files:\n${written.map((file) => `  ${file}`).join("\n")}`);

@@ -4,9 +4,8 @@
 
 - **Colors live only in `src/palette.ts`.** Which scopes a syntax role colors, and how the
   editor's UI uses the palette, is in `src/formats/vscode.ts`. Terminal formats are in
-  `src/formats/terminals.ts`, the npm package in `src/formats/npm.ts`, Zed in
-  `src/formats/zed.ts`.
-- **Never edit `themes/`, `npm/dist/`, `npm/package.json` or `zed/` by hand.** Run `npm run build`
+  `src/formats/terminals.ts`, the npm package in `src/formats/npm.ts`.
+- **Never edit `themes/`, `npm/dist/` or `npm/package.json` by hand.** Run `npm run build`
   and commit what it writes. CI fails if they differ from a fresh build. `npm/README.md` is
   written by hand.
 - **Before a pull request:** `npm run typecheck`, `npm run build`, `npm run check`. For any
