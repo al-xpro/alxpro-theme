@@ -128,10 +128,18 @@ The themes are drawn with [Geist Mono](https://vercel.com/font) in mind
 "terminal.integrated.fontFamily": "'Geist Mono'"
 ```
 
-If you write Tailwind CSS v4, don't use the **PostCSS Language Support** extension. It
-replaces VS Code's CSS grammar with one that reads the variables in `@theme` as HTML tags,
-so they're colored like tags in every theme. VS Code's own grammar, with the Tailwind CSS
-IntelliSense extension, colors `@theme` and `:root` correctly.
+To see the theme as it's designed, check your extensions. Some change how code is tagged,
+and so its colors, in every theme:
+
+- **Tailwind CSS IntelliSense**: install it if you write Tailwind CSS v4 (in Cursor and
+  VSCodium too, from Open VSX). Without it, `@theme`, `@layer` and `@custom-variant` aren't
+  understood, and the CSS after them loses its colors.
+- **PostCSS Language Support**: don't use it. It replaces VS Code's CSS grammar, in `.scss`
+  files too, with one that reads property names (`display`, `gap`) and the variables in
+  `@theme` as HTML tags, so they're green instead of blue.
+- **YAML** by Red Hat, and **GitHub Actions** in workflow files: their grammars read a key
+  that is also a YAML 1.1 boolean, like a workflow's `on:`, as a boolean, so it's blue
+  instead of pink like every other key. Nothing else changes, so keep them if you use them.
 
 Semantic highlighting is off on purpose, so VS Code colors code exactly as
 [Shiki](https://shiki.style) does on the web. Bracket pair colorization is themed to match
@@ -144,12 +152,12 @@ the punctuation, so brackets stay plain unless one is unmatched.
 | Background | `#000000` | `#FFFFFF` |
 | Text, punctuation, parameters | `#FFFFFF` | `#000000` |
 | Comments | `#A0A0A0` | `#666666` |
-| Keywords, operators, JSON keys, `${…}` | `#F6608F` | `#BD2864` |
+| Keywords, operators, JSON keys, `${…}`, CSS units | `#F6608F` | `#BD2864` |
 | Strings, HTML tags, shell arguments | `#62C073` | `#287A3A` |
 | Numbers, `const` names, objects (`event` in `event.preventDefault()`), types, interfaces, classes, components, CSS properties and `:root` variables, links | `#52A8FF` | `#0068D6` |
 | Functions, methods, properties, CSS classes and pseudo-classes, shell commands | `#BF7AF0` | `#781FBB` |
 | Props and attributes in markup (`className=`, `href=`) | `#F2A20D` | `#A35200` |
-| CSS units, deletions | `#FF6166` | `#CB2A2E` |
+| Deletions | `#FF6166` | `#CB2A2E` |
 
 ![Every color role, with its hex in AlxPro Dark and AlxPro Light](images/palette.png)
 
