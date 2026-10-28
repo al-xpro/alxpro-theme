@@ -3,6 +3,7 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { dark, light, palettes } from "../src/palette.ts";
 import { vscodeTheme } from "../src/formats/vscode.ts";
+import { markdownPreviewCss } from "../src/formats/preview.ts";
 import { terminalFormats } from "../src/formats/terminals.ts";
 import { bannerSvg } from "../src/banner.ts";
 import { css, indexDts, indexJs, packageJson, shikiTheme } from "../src/formats/npm.ts";
@@ -30,6 +31,8 @@ function write(folder: string, name: string, contents: string, base = out) {
 
 /* The walkthrough's banner ships with the VS Code themes. */
 write("vscode", "welcome.svg", bannerSvg());
+/* So does the stylesheet for code blocks in the Markdown preview. */
+write("vscode", "markdown-preview.css", markdownPreviewCss(palettes));
 
 for (const palette of palettes) {
   write("vscode", `${palette.slug}.json`, `${JSON.stringify(vscodeTheme(palette), null, 2)}\n`);

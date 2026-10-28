@@ -94,6 +94,15 @@ for (const p of palettes) {
   expect(theme.colors["editor.background"] === ui.background, `${p.name}: themes/ is stale, run npm run build`);
   JSON.parse(readFileSync(join(root, "themes/windows-terminal", `${p.slug}.json`), "utf8"));
 
+  /* The Markdown preview's code blocks: scoped to this theme, in its syntax colors only. */
+  const preview = readFileSync(join(root, "themes/vscode/markdown-preview.css"), "utf8");
+  const block = preview.split(`/* ${p.name} */`)[1]?.split(/\/\* AlxPro /)[0] ?? "";
+  expect(block.includes(`body[data-vscode-theme-id="${p.name}"]`), `${p.name}: the preview stylesheet has no rules for it`);
+  const syntaxColors = new Set(Object.values(syntax).map((c) => c.toUpperCase()));
+  for (const c of block.match(/#[0-9A-Fa-f]{6}\b/g) ?? []) {
+    expect(syntaxColors.has(c.toUpperCase()), `${p.name}: the preview stylesheet uses ${c}, which isn't a syntax color`);
+  }
+
   if (process.platform === "darwin") {
     const file = join(root, "themes/terminal-app", `${p.name}.terminal`);
     const output = execFileSync("swift", [join(root, "scripts/verify-terminal-app.swift"), file], {
@@ -127,6 +136,8 @@ for (const p of palettes) {
 }
 const versions = ["package.json", "npm/package.json"].map((f) => JSON.parse(readFileSync(join(root, f), "utf8")).version);
 expect(versions[0] === versions[1], `npm/package.json is ${versions[1]}, the extension ${versions[0]}: run npm run build`);
+const { contributes } = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
+expect(contributes["markdown.previewStyles"]?.includes("./themes/vscode/markdown-preview.css"), "package.json doesn't contribute the Markdown preview's stylesheet");
 
 /* install.sh runs alone through `curl | bash`, so it carries its own copy of the banner. */
 const installer = readFileSync(join(root, "install.sh"), "utf8");

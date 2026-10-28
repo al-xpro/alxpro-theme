@@ -20,6 +20,10 @@ VS Code, Cursor and eight terminals.
   Terminal, Alacritty, Kitty, WezTerm, and VS Code's own terminal.
 - **The whole editor is themed**: tabs, sidebar, menus, widgets, diff, git and the status
   bar, so nothing falls back to VS Code's blue and purple.
+- **Code blocks in the Markdown preview** use the palette too, while AlxPro is your theme.
+  The preview colors code with highlight.js, which tells fewer things apart than the
+  editor: a CSS unit takes its number's blue, a JSX component is green like an HTML tag,
+  and in shell blocks only built-in commands like `cd` are colored.
 
 ![CSS with Tailwind, Markdown, JSON and shell commands, in AlxPro Dark and AlxPro Light](images/languages.png)
 
