@@ -151,7 +151,8 @@ The themes are drawn with [Geist Mono](https://vercel.com/font) in mind
 "terminal.integrated.fontFamily": "'Geist Mono'"
 ```
 
-Three extensions change how code is tagged, and so its colors, in every theme:
+To see the theme as it's designed, check your extensions. Some change how code is tagged,
+and so its colors, in every theme:
 
 - **Tailwind CSS IntelliSense**: install it if you write Tailwind CSS v4 (in Cursor and
   VSCodium too, from Open VSX). Without it, `@theme`, `@layer` and `@custom-variant` aren't
@@ -159,8 +160,9 @@ Three extensions change how code is tagged, and so its colors, in every theme:
 - **PostCSS Language Support**: don't use it. It replaces VS Code's CSS grammar, in `.scss`
   files too, with one that reads property names (`display`, `gap`) and the variables in
   `@theme` as HTML tags, so they're green instead of blue.
-- **YAML** by Red Hat: its grammar reads a key that is also a YAML 1.1 boolean, like
-  GitHub Actions' `on:`, as a boolean, so it's blue instead of pink like every other key.
+- **YAML** by Red Hat, and **GitHub Actions** in workflow files: their grammars read a key
+  that is also a YAML 1.1 boolean, like a workflow's `on:`, as a boolean, so it's blue
+  instead of pink like every other key. Nothing else changes, so keep them if you use them.
 
 Semantic highlighting is off on purpose, so VS Code colors code exactly as
 [Shiki](https://shiki.style) does on the web. Bracket pair colorization is themed to match
