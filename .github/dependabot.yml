@@ -1,13 +1,18 @@
+# Version updates once a month, one grouped pull request per ecosystem.
+# Security updates aren't affected: Dependabot opens those as soon as an advisory lands.
 version: 2
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
     groups:
-      dev-dependencies:
-        dependency-type: development
+      npm:
+        patterns: ["*"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
+    groups:
+      github-actions:
+        patterns: ["*"]
