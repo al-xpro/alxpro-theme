@@ -4,12 +4,19 @@ All notable changes to this project. Versions follow [semver](https://semver.org
 patch changes a color, a minor adds a format or a language, a major changes what a role
 means.
 
-## Unreleased
+## 1.2.0 — 2026-10-28
 
 ### Added
 
 - Code blocks in VS Code's Markdown preview use the palette while AlxPro Dark or Light is
   active. Other themes' previews are unchanged.
+- The README says which extensions change the colors: install Tailwind CSS IntelliSense,
+  don't use PostCSS Language Support, and know that Red Hat's YAML and GitHub Actions turn
+  a key like `on:` blue.
+
+### Fixed
+
+- The README's palette table lists CSS units with the pink of keywords.
 
 ### Removed
 
