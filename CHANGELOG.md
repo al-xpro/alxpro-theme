@@ -6,6 +6,11 @@ means.
 
 ## Unreleased
 
+### Added
+
+- Code blocks in VS Code's Markdown preview use the palette while AlxPro Dark or Light is
+  active. Other themes' previews are unchanged.
+
 ### Removed
 
 - The Zed theme. Zed can't tell apart several things VS Code colors differently (`const`

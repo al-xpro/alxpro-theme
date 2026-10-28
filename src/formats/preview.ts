@@ -1,0 +1,79 @@
+import type { Palette, Syntax } from "../palette.ts";
+
+/*
+ * Code blocks in VS Code's Markdown preview, which highlight.js colors
+ * instead of the theme. The extension contributes this stylesheet through
+ * `markdown.previewStyles`, and every rule is scoped to the active theme's id,
+ * so the preview changes only while AlxPro is on.
+ *
+ * highlight.js names fewer things than the editor's grammars, so each of its
+ * classes takes the role it plays most often: a CSS unit is part of its
+ * number, a JSX component is a tag, and `this` is a built-in like `console`.
+ */
+
+type Rule = { selectors: string[]; role?: keyof Syntax; style?: string };
+
+const SHELL = ["bash", "sh", "shell", "zsh", "console"];
+const STYLES = ["css", "scss", "less", "postcss"];
+const DATA = ["json", "jsonc", "json5", "yaml", "yml", "toml"];
+const MARKDOWN = ["markdown", "md"];
+const DIFF = ["diff", "patch"];
+
+/** Classes in any code block. */
+const any = (...classes: string[]) => classes.map((c) => `pre code ${c}`);
+/** Classes in code blocks of the given languages, as written after the fence. */
+const only = (languages: string[], ...classes: string[]) =>
+  languages.flatMap((l) => classes.map((c) => `pre code.language-${l} ${c}`));
+
+/* A rule beats an earlier one of the same specificity, so the general ones come first. */
+const rules: Rule[] = [
+  { selectors: ["pre code", ...any(".hljs-variable", ".hljs-subst", ".hljs-function", ".hljs-formula", ".hljs-template-variable", ".hljs-code")], role: "foreground" },
+  { selectors: any(".hljs-quote"), role: "foreground", style: "font-style: normal;" },
+  { selectors: any(".hljs-punctuation", ".hljs-tag", ".hljs-bullet"), role: "punctuation" },
+  { selectors: any(".hljs-comment"), role: "comment", style: "font-style: italic;" },
+  { selectors: any(".hljs-keyword", ".hljs-doctag", ".hljs-meta", ".hljs-template-tag"), role: "keyword" },
+  { selectors: any(".hljs-operator"), role: "operator" },
+  { selectors: any(".hljs-string", ".hljs-meta .hljs-string"), role: "string" },
+  { selectors: any(".hljs-regexp"), role: "regex" },
+  { selectors: any(".hljs-char.escape_"), role: "escape" },
+  // `const` names in capitals, `console` and `document`, numbers and `true`.
+  { selectors: any(".hljs-number", ".hljs-literal", ".hljs-symbol", ".hljs-variable.constant_", ".hljs-variable.language_"), role: "constant" },
+  { selectors: any(".hljs-title", ".hljs-title.function_"), role: "function" },
+  // Classes and components where they're declared or used outside a tag, built-in types.
+  { selectors: any(".hljs-type", ".hljs-built_in", ".hljs-title.class_", ".hljs-class"), role: "type" },
+  // An object's keys in JavaScript.
+  { selectors: any(".hljs-attr", ".hljs-property"), role: "property" },
+  { selectors: any(".hljs-params"), role: "parameter", style: "font-style: italic;" },
+  { selectors: any(".hljs-name", ".hljs-selector-tag"), role: "tag" },
+  // Props and attributes in markup, and an attribute in a CSS selector, as in the editor.
+  { selectors: any(".hljs-tag .hljs-attr", ".hljs-selector-attr"), role: "attribute" },
+  { selectors: any(".hljs-selector-class", ".hljs-selector-id"), role: "selector" },
+  { selectors: any(".hljs-selector-pseudo"), role: "pseudo" },
+  { selectors: any(".hljs-attribute", ...only(STYLES, ".hljs-attr")), role: "styleProperty" },
+  { selectors: only(STYLES, ".hljs-built_in"), role: "function" },
+  { selectors: only(DATA, ".hljs-attr"), role: "key" },
+  { selectors: only(SHELL, ".hljs-built_in"), role: "command" },
+  { selectors: only(SHELL, ".hljs-variable"), role: "argument" },
+  { selectors: any(".hljs-section"), role: "heading", style: "font-weight: bold;" },
+  { selectors: [...any(".hljs-link"), ...only(MARKDOWN, ".hljs-string")], role: "link", style: "text-decoration: underline;" },
+  { selectors: any(".hljs-emphasis"), style: "font-style: italic;" },
+  { selectors: any(".hljs-strong"), style: "font-weight: bold;" },
+  { selectors: any(".hljs-addition"), role: "inserted" },
+  { selectors: any(".hljs-deletion"), role: "deleted" },
+  // A diff's file headers read as text, its `@@` ranges as values.
+  { selectors: only(DIFF, ".hljs-comment"), role: "foreground", style: "font-style: normal;" },
+  { selectors: only(DIFF, ".hljs-meta"), role: "constant" },
+];
+
+/** The stylesheet for both themes, each under its own theme id. */
+export function markdownPreviewCss(palettes: readonly Palette[]): string {
+  const blocks = palettes.map((p) => {
+    const scope = `body[data-vscode-theme-id="${p.name}"]`;
+    const css = rules.map(({ selectors, role, style }) => {
+      const declarations = [role ? `color: ${p.syntax[role]};` : "", style ?? ""].filter(Boolean).join(" ");
+      return `${selectors.map((s) => `${scope} ${s}`).join(",\n")} {\n  ${declarations}\n}`;
+    });
+    return `/* ${p.name} */\n\n${css.join("\n\n")}`;
+  });
+  return `/* Code blocks in VS Code's Markdown preview, from src/palette.ts. Generated by npm run build. */\n\n${blocks.join("\n\n")}\n`;
+}

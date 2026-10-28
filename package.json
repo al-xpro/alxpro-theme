@@ -61,6 +61,9 @@
         "path": "./themes/vscode/alxpro-light.json"
       }
     ],
+    "markdown.previewStyles": [
+      "./themes/vscode/markdown-preview.css"
+    ],
     "walkthroughs": [
       {
         "id": "welcome",
