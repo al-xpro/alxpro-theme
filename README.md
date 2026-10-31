@@ -74,6 +74,14 @@ the system's appearance:
 "workbench.preferredLightColorTheme": "AlxPro Light"
 ```
 
+VS Code's **Agents** window only runs extensions it knows are safe there, and for now that
+excludes AlxPro, because the extension also adds a walkthrough. To use the themes there too:
+
+```jsonc
+// settings.json
+"extensions.supportAgentsWindow": { "alxpro.alxpro-theme": true }
+```
+
 ### Cursor, Windsurf, VSCodium
 
 These install from [Open VSX](https://open-vsx.org/extension/alxpro/alxpro-theme): search
