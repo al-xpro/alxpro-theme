@@ -226,9 +226,10 @@ export function vscodeTheme(p: Palette) {
       "scrollbarSlider.activeBackground": alpha(u.strong, "33"),
 
       /* Floating widgets: suggestions, hovers, quick input, menus, notifications, peek. */
-      /* The find widget, rename box and the like: the block color around an
-         input that keeps the surface color, so the field stands out. */
-      "editorWidget.background": u.block,
+      /* The find widget, rename box and the like: the editor's own black or
+         white, like every other floating widget; the border sets it apart and
+         the input keeps its field color. */
+      "editorWidget.background": u.background,
       "editorWidget.foreground": u.text,
       "editorWidget.border": u.border,
       "editorWidget.resizeBorder": u.accent,
