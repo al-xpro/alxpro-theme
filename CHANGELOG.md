@@ -4,13 +4,22 @@ All notable changes to this project. Versions follow [semver](https://semver.org
 patch changes a color, a minor adds a format or a language, a major changes what a role
 means.
 
-## Unreleased
+## 1.3.0 — 2026-10-31
 
 ### Changed
 
 - Amber also marks the props a component receives: the names unpacked in its parameters,
   as in `function Card({ title, href })`. A prop is now amber where it's passed and where
   it's received.
+- The README opens with the icon, badges and links to every place to install, and its
+  images show each file's icon and path.
+
+### Fixed
+
+- The find widget (`cmd-f`) and the other editor widgets are pure black or white, like
+  every other floating widget, instead of grey.
+- The extension declares that it supports VS Code's Agents window. Until VS Code reads
+  that by default, the README gives the one setting that turns the themes on there.
 
 ## 1.2.0 — 2026-10-28
 
