@@ -25,7 +25,7 @@ VS Code, Cursor and eight terminals.
   editor: a CSS unit takes its number's blue, a JSX component is green like an HTML tag,
   and in shell blocks only built-in commands like `cd` are colored.
 
-![CSS with Tailwind, Markdown, JSON and shell commands, in AlxPro Dark and AlxPro Light](images/languages.png)
+![CSS with Tailwind, Markdown, JSON, shell commands, Vue and Svelte, in AlxPro Dark and AlxPro Light](images/languages.png)
 
 ## Install
 
