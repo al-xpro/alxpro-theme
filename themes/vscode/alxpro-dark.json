@@ -177,7 +177,7 @@
     "scrollbarSlider.background": "#FFFFFF1A",
     "scrollbarSlider.hoverBackground": "#FFFFFF26",
     "scrollbarSlider.activeBackground": "#FFFFFF33",
-    "editorWidget.background": "#0A0A0A",
+    "editorWidget.background": "#000000",
     "editorWidget.foreground": "#EDEDED",
     "editorWidget.border": "#1F1F1F",
     "editorWidget.resizeBorder": "#52A8FF",
