@@ -38,7 +38,8 @@ Development Host. [`samples/`](samples/) has a sample for each language the them
   change the scope lists in [`src/formats/vscode.ts`](src/formats/vscode.ts), not the colors.
 - **Never edit the generated files** (`themes/`, `npm/package.json`) by hand. Run
   `npm run build` and commit what it writes; CI fails if they differ from a fresh build.
-- **Amber is only for props and attributes in markup.**
+- **Amber is only for props:** attributes in markup, and the props a component receives in its
+  parameters.
 - Every text color keeps WCAG AA contrast; `npm run check` fails otherwise.
 
 [`AGENTS.md`](AGENTS.md) has the full set, for people and coding agents alike.

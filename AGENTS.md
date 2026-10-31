@@ -15,7 +15,8 @@
   which tokenizes with the VS Code and extensions installed on the machine (the Shiki
   preview can differ from VS Code), or with **Developer: Inspect Editor Tokens and Scopes**.
   Then change the scope lists in `src/formats/vscode.ts`, not the colors.
-- **Amber is for props and attributes in markup only.** Don't spread it to other roles.
+- **Amber is for props only:** attributes in markup, and the props a component receives in
+  its parameters. Don't spread it to other roles.
 - **Releases:** bump `version` in `package.json`, add a `CHANGELOG.md` entry, merge, and
   tag `vX.Y.Z`. The release workflow does the rest.
 - **The images in `images/` are designed in Figma** (the "AlxPro Theme · Images" file) and
