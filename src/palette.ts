@@ -38,7 +38,7 @@ export type Syntax = {
   type: Hex;
   /** Properties: object keys, `.checked` in `e.target.checked`, interface members. */
   property: Hex;
-  /** Props and attributes in markup: `className=`, `href=`, Vue's `:class`. Kept to markup on purpose. */
+  /** Props, and only props: attributes in markup (`className=`, `href=`, Vue's `:class`) and the props a component receives (`{ title, href }`). */
   attribute: Hex;
   /** Keys in data files: JSON and YAML. */
   key: Hex;

@@ -567,8 +567,10 @@ export function vscodeTheme(p: Palette) {
       ]),
       rule(s.parameter, ["variable.parameter", "meta.parameters variable"], "italic"),
       rule(s.tag, ["entity.name.tag", "entity.name.tag.css"]),
-      // Props in JSX and attributes in HTML: the one place amber is used.
+      /* Props: where they're passed, as attributes in JSX and HTML, and where
+         they're received, as the names unpacked in a component's parameters. */
       rule(s.attribute, ["entity.other.attribute-name", "entity.other.attribute-name.jsx"]),
+      rule(s.attribute, ["meta.parameter.object-binding-pattern variable.parameter"], "italic"),
 
       /* CSS. */
       rule(s.selector, [

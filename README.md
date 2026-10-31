@@ -9,7 +9,8 @@ VS Code, Cursor and eight terminals.
 
 - **Pure black and pure white backgrounds**, with white or black text, and a few accents
   that mean one thing each: pink keywords, green strings, blue values and types, purple
-  functions and properties, and amber kept for props in markup.
+  functions and properties, and amber kept for props, where they're passed and where they're
+  received.
 - **Made for the web stack**: TSX, TypeScript, CSS and Tailwind, HTML, JSON, YAML,
   Markdown, MDX, shell, Vue and Svelte, tested on real files in [`samples/`](samples/).
 - **Shell commands read at a glance**: the program is purple, everything it's given is
@@ -160,7 +161,7 @@ the punctuation, so brackets stay plain unless one is unmatched.
 | Strings, HTML tags, shell arguments | `#62C073` | `#287A3A` |
 | Numbers, `const` names, objects (`event` in `event.preventDefault()`), types, interfaces, classes, components, CSS properties and `:root` variables, links | `#52A8FF` | `#0068D6` |
 | Functions, methods, properties, CSS classes and pseudo-classes, shell commands | `#BF7AF0` | `#781FBB` |
-| Props and attributes in markup (`className=`, `href=`) | `#F2A20D` | `#A35200` |
+| Props: attributes in markup (`className=`, `href=`), and the props a component receives (`{ title, href }`) | `#F2A20D` | `#A35200` |
 | Deletions | `#FF6166` | `#CB2A2E` |
 
 ![Every color role, with its hex in AlxPro Dark and AlxPro Light](images/palette.png)

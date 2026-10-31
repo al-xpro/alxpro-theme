@@ -616,6 +616,15 @@
     },
     {
       "scope": [
+        "meta.parameter.object-binding-pattern variable.parameter"
+      ],
+      "settings": {
+        "foreground": "#A35200",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
         "entity.other.attribute-name.class.css",
         "entity.other.attribute-name.class punctuation.definition.entity",
         "entity.other.attribute-name.id.css",
