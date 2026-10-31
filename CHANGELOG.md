@@ -4,6 +4,14 @@ All notable changes to this project. Versions follow [semver](https://semver.org
 patch changes a color, a minor adds a format or a language, a major changes what a role
 means.
 
+## Unreleased
+
+### Changed
+
+- Amber also marks the props a component receives: the names unpacked in its parameters,
+  as in `function Card({ title, href })`. A prop is now amber where it's passed and where
+  it's received.
+
 ## 1.2.0 — 2026-10-28
 
 ### Added

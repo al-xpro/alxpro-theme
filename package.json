@@ -48,6 +48,11 @@
     "vscode": "^1.80.0",
     "node": ">=22.6"
   },
+  "capabilities": {
+    "agentsWindow": {
+      "supported": true
+    }
+  },
   "contributes": {
     "themes": [
       {

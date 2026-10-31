@@ -177,7 +177,7 @@
     "scrollbarSlider.background": "#0000001A",
     "scrollbarSlider.hoverBackground": "#00000026",
     "scrollbarSlider.activeBackground": "#00000033",
-    "editorWidget.background": "#FAFAFA",
+    "editorWidget.background": "#FFFFFF",
     "editorWidget.foreground": "#171717",
     "editorWidget.border": "#EAEAEA",
     "editorWidget.resizeBorder": "#0068D6",
@@ -612,6 +612,15 @@
       ],
       "settings": {
         "foreground": "#A35200"
+      }
+    },
+    {
+      "scope": [
+        "meta.parameter.object-binding-pattern variable.parameter"
+      ],
+      "settings": {
+        "foreground": "#A35200",
+        "fontStyle": "italic"
       }
     },
     {
