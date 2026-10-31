@@ -1,9 +1,28 @@
-# AlxPro Theme
+<p align="center">
+  <img src="images/icon.png" alt="The AlxPro Theme icon" width="96" height="96">
+</p>
 
-Black-and-white dark and light themes for web development, with matching colors for
-VS Code, Cursor and eight terminals.
+<h1 align="center">AlxPro Theme</h1>
 
-[![CI](https://github.com/al-xpro/alxpro-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/al-xpro/alxpro-theme/actions/workflows/ci.yml)
+<p align="center">
+  Black-and-white dark and light themes for web development, with matching colors for
+  VS Code, Cursor, eight terminals and the web.
+</p>
+
+<p align="center">
+  <a href="https://github.com/al-xpro/alxpro-theme/actions/workflows/ci.yml"><img src="https://github.com/al-xpro/alxpro-theme/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://open-vsx.org/extension/alxpro/alxpro-theme"><img src="https://img.shields.io/open-vsx/v/alxpro/alxpro-theme?label=Open%20VSX" alt="Open VSX version"></a>
+  <a href="https://www.npmjs.com/package/alxpro-theme"><img src="https://img.shields.io/npm/v/alxpro-theme?label=npm" alt="npm version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/al-xpro/alxpro-theme" alt="MIT license"></a>
+</p>
+
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=alxpro.alxpro-theme"><b>VS Code Marketplace</b></a> ·
+  <a href="https://open-vsx.org/extension/alxpro/alxpro-theme"><b>Open VSX</b></a> (Cursor, Windsurf, VSCodium) ·
+  <a href="https://www.npmjs.com/package/alxpro-theme"><b>npm</b></a> ·
+  <a href="https://github.com/mbadolato/iTerm2-Color-Schemes"><b>iTerm2-Color-Schemes</b></a> ·
+  <a href="https://github.com/al-xpro/alxpro-theme/releases/latest"><b>Releases</b></a>
+</p>
 
 ![AlxPro Dark and AlxPro Light, side by side, on a React component](images/hero.png)
 
@@ -24,6 +43,8 @@ VS Code, Cursor and eight terminals.
   The preview colors code with highlight.js, which tells fewer things apart than the
   editor: a CSS unit takes its number's blue, a JSX component is green like an HTML tag,
   and in shell blocks only built-in commands like `cd` are colored.
+- **Your site can match your editor**: the [npm package](#on-the-web) carries the same
+  themes for Shiki, terminal colors for xterm.js, and every color as a CSS variable.
 
 ![CSS with Tailwind, Markdown, JSON and shell commands, in AlxPro Dark and AlxPro Light](images/languages.png)
 
@@ -64,7 +85,8 @@ excludes AlxPro, because the extension also adds a walkthrough. To use the theme
 ### Cursor, Windsurf, VSCodium
 
 These install from [Open VSX](https://open-vsx.org/extension/alxpro/alxpro-theme): search
-for **AlxPro Theme** in the Extensions view.
+for **AlxPro Theme** in the Extensions view. They color code the same way VS Code does, so
+the themes look the same there.
 
 Every release also attaches the `.vsix` on the
 [Releases page](https://github.com/al-xpro/alxpro-theme/releases). Install it with
@@ -72,7 +94,11 @@ Every release also attaches the `.vsix` on the
 
 ### Terminals
 
-Run this in the terminal you want to theme. It works out which terminal it is, installs
+Both themes are in [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes),
+a collection that many terminals' theme lists come from. Ghostty bundles it, so a future
+Ghostty release will list **AlxPro Dark** and **AlxPro Light** with nothing to copy.
+
+To install them now, run this in the terminal you want to theme. It works out which terminal it is, installs
 both themes there, and tells you the one line to add to turn them on. It never edits your
 config files.
 
@@ -178,7 +204,8 @@ Every value lives in [`src/palette.ts`](src/palette.ts).
 ## On the web
 
 Your site, blog and docs can match your editor with the
-[`alxpro-theme`](npm/README.md) npm package: Shiki themes (for Shiki, rehype-pretty-code,
+[`alxpro-theme`](https://www.npmjs.com/package/alxpro-theme) npm package
+([its README](npm/README.md)): Shiki themes (for Shiki, rehype-pretty-code,
 Expressive Code, Fumadocs and Nextra), terminal colors for xterm.js, and every color as a CSS
 custom property.
 
@@ -201,6 +228,12 @@ const html = highlighter.codeToHtml(code, {
 ```
 
 ## How the themes are made
+
+Built with TypeScript, run directly by Node.js, and no runtime dependencies. The checks use
+[vscode-textmate](https://github.com/microsoft/vscode-textmate) to tokenize like VS Code,
+[Shiki](https://shiki.style) for the npm package and the preview page, and
+[Playwright](https://playwright.dev) for renders. GitHub Actions builds, checks and
+publishes every release.
 
 ```text
 src/palette.ts            every color, for both themes: syntax, terminal, editor UI
@@ -240,9 +273,13 @@ The rules are in [`AGENTS.md`](AGENTS.md).
 
 ## Roadmap
 
-See the [open issues](https://github.com/al-xpro/alxpro-theme/issues). Next: the terminal
-themes in [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes), which
-Ghostty ships, and in [Warp's themes](https://github.com/warpdotdev/themes).
+See the [open issues](https://github.com/al-xpro/alxpro-theme/issues).
+
+- [x] VS Code Marketplace, Open VSX and npm
+- [x] [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes), and through
+  it Ghostty's built-in list
+- [ ] [Warp's themes](https://github.com/warpdotdev/themes)
+  ([pull request](https://github.com/warpdotdev/themes/pull/171))
 
 ## Credits
 
