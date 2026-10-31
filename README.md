@@ -47,7 +47,7 @@
 - **Your site can match your editor**: the [npm package](#on-the-web) carries the same
   themes for Shiki, terminal colors for xterm.js, and every color as a CSS variable.
 
-![CSS with Tailwind, Markdown, JSON and shell commands, in AlxPro Dark and AlxPro Light](images/languages.png)
+![CSS with Tailwind, Markdown, JSON, shell commands, Vue and Svelte, in AlxPro Dark and AlxPro Light](images/languages.png)
 
 ## Install
 
