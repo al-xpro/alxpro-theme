@@ -4,6 +4,15 @@ All notable changes to this project. Versions follow [semver](https://semver.org
 patch changes a color, a minor adds a format or a language, a major changes what a role
 means.
 
+## Unreleased
+
+### Changed
+
+- AlxPro Light's header is white like its background, instead of `#FAFAFA`: VS Code's
+  title bar, and in the npm package the header of a code or terminal block
+  (`terminal.light.header`, `--alxpro-terminal-header`) and of Expressive Code's terminal
+  frames. AlxPro Dark's was already black.
+
 ## 1.3.0 — 2026-10-31
 
 ### Changed
