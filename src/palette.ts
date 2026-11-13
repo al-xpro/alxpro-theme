@@ -91,7 +91,7 @@ export type Ui = {
   field: Hex;
   /** Inline code in chat, hovers and the Markdown preview. */
   code: Hex;
-  /** The title bar, and the header of modal editors such as Settings and Profiles. */
+  /** The title bar, the header of modal editors such as Settings and Profiles, and on the web a code or terminal block's header. */
   header: Hex;
   hover: Hex;
   /** A selected row. */
@@ -269,7 +269,7 @@ export const light: Palette = {
     block: "#FAFAFA",
     field: "#FAFAFA",
     code: "#E8E8E8",
-    header: "#FAFAFA",
+    header: "#FFFFFF",
     hover: "#F5F5F5",
     active: "#EBEBEB",
     border: "#EAEAEA",
