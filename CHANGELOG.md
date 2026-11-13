@@ -4,7 +4,7 @@ All notable changes to this project. Versions follow [semver](https://semver.org
 patch changes a color, a minor adds a format or a language, a major changes what a role
 means.
 
-## Unreleased
+## 1.3.1 — 2026-11-13
 
 ### Changed
 
@@ -12,6 +12,8 @@ means.
   title bar, and in the npm package the header of a code or terminal block
   (`terminal.light.header`, `--alxpro-terminal-header`) and of Expressive Code's terminal
   frames. AlxPro Dark's was already black.
+- The npm package's README opens like the main one, with a feature list for the web, the
+  CSS variables, and each color role with its variable.
 
 ## 1.3.0 — 2026-10-31
 
